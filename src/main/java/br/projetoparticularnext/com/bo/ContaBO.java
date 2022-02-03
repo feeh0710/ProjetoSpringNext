@@ -88,21 +88,21 @@ public class ContaBO {
 				retorno.add(" >>Tipo conta: " + conta.getCliente().getTipo().name());
 				cont++;
 			}
-			if (conta.getTipoConta() == TipoConta.ContaCorrente) {
+			if (conta.getTipoConta() == TipoConta.CORRENTE) {
 				id = 1;
 				tipo++;
 				cc = conta; // SETA CONTA EM CONTA CORRENTE
 				retorno.add(" >>Numero corrente: " + conta.getNumero());
 				retorno.add(" >>Saldo:" + utils.convertToReais(consultarSaldo(conta)));
 			}
-			if (conta.getTipoConta() == TipoConta.ContaPoupanca) {
+			if (conta.getTipoConta() == TipoConta.POUPANCA) {
 				id = 2;
 				cp = conta; // SETA CONTA EM CONTA POUPANCA
 				retorno.add(" >>Numero poupanca: " + conta.getNumero());
 				retorno.add(" >>Saldo:" + utils.convertToReais(consultarSaldo(conta)));
 				tipo++;
 			}
-			if (conta.getTipoConta() == TipoConta.ContaCorrente && conta.getTipoConta() == TipoConta.ContaPoupanca) {
+			if (conta.getTipoConta() == TipoConta.CORRENTE && conta.getTipoConta() == TipoConta.POUPANCA) {
 				id = 3;
 			}
 		}

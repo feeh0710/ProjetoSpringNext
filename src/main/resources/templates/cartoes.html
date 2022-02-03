@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Banco Next | Cartões </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link th:href="@{/styles/style.css}" rel="stylesheet" />
+	<link rel="shortcut icon" th:href="@{/imagens/next.png}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><a href="index.html"> Banco Next </a></h1>
+            <ul>
+                <li><a href="areaLogado.html"> Minha Área </a></li>
+                <li><a href="cartoes.html"> <strong>Cartões</strong> </a></li>
+                <li><a href="pix.html"> Área PIX </a></li>
+                <li><a href="index.html"> Sair </a></li>
+            </ul>
+        </header>
+
+        <section class="cartoes">
+            <p><strong> Saldo: </strong><span> R$ 0.0 </span></p>
+            <h2> Cartão Débito </h2>
+            <div class="debito">
+                <a href="" class="btn"> Inserir </a>
+                <a href="" class="btn"> Excluír </a>
+                <a href="" class="btn"> Ativar </a>
+                <a href="" class="btn"> Desativar </a>
+                <a href="" class="btn"> Consultar </a>
+            </div>
+            <h2> Cartão Crédito </h2>
+            <div class="credito">
+                <a href="" class="btn"> Inserir </a>
+                <a href="" class="btn"> Excluír </a>
+                <a href="" class="btn"> Ativar </a>
+                <a href="" class="btn"> Desativar </a>
+                <a href="" class="btn"> Consultar </a>
+                <a href="" class="btn"> Comprar </a>
+                <a href="" class="btn"> Compras </a>
+                <a href="" class="btn"> Faturas </a>
+                <a href="" class="btn"> Pagamento </a>
+                <a href="seguros.html"> Seguro </a>
+            </div>
+        </section>
+
+        <footer>
+			<div>
+				<h2> Endereço </h2>
+				<p> Avenida Brasil, 277 - <strong> CEP: </strong> 08125-377 </p>
+				<p> Alphaville </p>
+				<p> São Paulo / SP </p>
+			</div>
+			<div>
+				<h2> Mídias </h2>
+				<p> @banconext </p>
+				<p> next_next </p>
+                <p><a href="https://next.me/" target="_blank">https://next.me/</a></p>
+			</div>
+			<div>
+				<h2> Contato </h2>
+				<p> next.foursys@next.com </p>
+				<p> (11) 2025-2520 </p>
+				<p> Banco Next © Alguns direitos reservados. </p>
+			</div>
+		</footer>
+    </div>
+
+    <div class="modal-inserir">
+        <button class="btn-cancelar"> X </button>
+        <h2> Inserir Cartão </h2>
+        <p> Escolha a bandeira </p>
+        <select>
+            <option> Selecione... </option>
+            <option> Master </option>
+            <option> Visa </option>
+            <option> Elo </option>
+        </select>
+        <label for="dataVencimento"> Data Vencimento: </label>
+        <input type="date" id="dataVencimento">
+
+        <label for="senhaDebito"> Senha: </label>
+        <input type="password" id="senhaDebito" placeholder="Crie uma senha de 4 dígitos" maxlength="4">
+
+        <div class="div-cartoes">
+            <a href="" class="btn-finalizarModal"> Finalizar </a>
+            <a href="" class="btn-cancelar"> Cancelar </a>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

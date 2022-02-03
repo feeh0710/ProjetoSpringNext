@@ -3,7 +3,7 @@ package br.projetoparticularnext.com.utils;
 import java.util.InputMismatchException;
 
 public class ValidaCPF {
-public boolean verificaCpf(String CPF) {
+public static boolean verificaCpf(String CPF) {
 		
 		CPF = removeCaracteresEspeciais(CPF);
 		// considera-se erro CPF's formados por uma sequencia de numeros iguais
@@ -57,7 +57,7 @@ public boolean verificaCpf(String CPF) {
 			return (false);
 		}
 	}
-	public String removeCaracteresEspeciais(String doc) {
+	public static String removeCaracteresEspeciais(String doc) {
 		if (doc.contains(".")) {
 			doc = doc.replace(".", "");
 		}

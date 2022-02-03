@@ -47,5 +47,10 @@ public class Const {
 	public static int PIX_CRIADOS = 1;
 	public static int APOLICES_CRIADOS = 1;
 	public static int SEGUROS_CRIADOS = 1;
+	
+	
+	//CONTANTE PROVISORIA ID CLIENTE
+	public static Long ID_CLIENTE_LOGADO;
+	public static Long ID_CONTA_LOGADA;
 
 }

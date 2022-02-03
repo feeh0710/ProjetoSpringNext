@@ -33,12 +33,17 @@ public class CartaoCredito extends Cartao {
 	@OneToOne(mappedBy = "credito")
 	private Conta conta;
 	
+	
 	public CartaoCredito(String bandeira, String senha, boolean isAtivo, double limite, String dataVencimento) {
 		super(Utils.geraBlocosNumeros(4), bandeira, senha, isAtivo);// cartao pede
 		this.limite = limite;
 		this.dataVencimento = dataVencimento;
 //		this.dataVencimento = Utils.returnDataDiaDefinido(dataVencimento);
 		this.valorFatura = 0.0;
+	}
+	
+	public CartaoCredito() {
+		// TODO Auto-generated constructor stub
 	}
 	
 

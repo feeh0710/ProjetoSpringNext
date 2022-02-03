@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Banco Next | Dashboard </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+	<link rel="shortcut icon" th:href="@{/imagens/next.png}">
+</head>
+
+<body>
+    <div class="container" th:object="${conta}">
+        <header>
+            <h1><a href="index.html"> Banco Next </a></h1>
+            <ul>
+                <li><a href="areaLogado.html"> <strong>Minha Área</strong> </a></li>
+                <li><a href="cartoes.html"> Cartões </a></li>
+                <li><a href="pix.html"> Área PIX </a></li>
+                <li><a href="escolhaConta.html"> Voltar </a></li>
+                <li><a href="/"> Sair </a></li>
+            </ul>
+        </header>
+
+        <section class="funcoes">
+            <p><strong> Saldo: </strong><span th:text="${conta.saldo}"> R$ 0.0 </span></p>
+            <div>
+                <a href="saque.html"> Sacar </a>
+                <a href="depositar.html"> Depositar </a>
+                <a href="transferir.html"> Transferir </a>
+                <a href="consultar.html"> Consultar </a>
+            </div>
+        </section>
+
+		<footer>
+			<div>
+				<h2> Endereço </h2>
+				<p> Avenida Brasil, 277 - <strong> CEP: </strong> 08125-377 </p>
+				<p> Alphaville </p>
+				<p> São Paulo / SP </p>
+			</div>
+			<div>
+				<h2> Mídias </h2>
+				<p> @banconext </p>
+				<p> next_next </p>
+                <p><a href="https://next.me/" target="_blank">https://next.me/</a></p>
+			</div>
+			<div>
+				<h2> Contato </h2>
+				<p> next.foursys@next.com </p>
+				<p> (11) 2025-2520 </p>
+				<p> Banco Next © Alguns direitos reservados. </p>
+			</div>
+		</footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

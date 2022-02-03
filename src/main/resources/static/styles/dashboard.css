@@ -1,0 +1,192 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Quicksand";
+}
+
+a {
+	text-decoration: none;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+}
+
+header {
+	grid-column: 1 / 9;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #1ab455;
+	padding: 30px;
+}
+
+header ul {
+	display: flex;
+	list-style: none;
+}
+
+header ul li {
+	margin-right: 30px;
+}
+
+header h1 a {
+	font-size: 2.5rem;
+	color: #fff;
+}
+
+header ul li a {
+	color: #fff;
+	letter-spacing: 1.5px;
+}
+
+/* --------------------------- */
+
+.saque,
+.deposito,
+.transferencia,
+.cadastroPix,
+.exclusaoPix,
+.transferirPix,
+.consultaPix {
+	grid-column: 1 / 9;
+	width: 500px;
+	margin: 0 auto;
+	padding: 50px;
+}
+
+.consulta {
+	grid-column: 3 / 7;
+	padding: 50px 0px 0px 0px;
+}
+
+.consulta fieldset {
+	display: flex;
+	justify-content: space-between;
+}
+
+.consulta p {
+	font-size: 1.25rem;
+	margin-bottom: 15px;
+}
+
+fieldset {
+	padding: 50px;
+}
+
+fieldset legend {
+	font-size: 2rem;
+}
+
+.saque p,
+.deposito p,
+.transferencia p {
+	font-size: 1.5rem;
+	padding: 30px;
+	position: absolute;
+	right: 80px;
+	top: 110px;
+}
+
+.saque label,
+.deposito label,
+.transferencia label {
+	display: block;
+}
+
+.saque input,
+.deposito input,
+.transferencia input {
+	font-family: "Quicksand";
+	padding: 10px;
+	width: 300px;
+	margin: 5px 0px 20px 0px;
+}
+
+.saque a,
+.deposito a,
+.transferencia a,
+.cadastroPix a,
+.exclusaoPix a,
+.transferirPix a,
+.consultaPix a {
+	font-family: "Quicksand";
+	font-size: 1.15rem;
+	font-weight: bold;
+	letter-spacing: 1.5px;
+	text-align: center;
+	background: #1ab455;
+	color: #fff;
+	border: 1px solid #fff;
+	padding: 10px;
+	width: 300px;
+	display: block;
+	transition: all 0.3s;
+	cursor: pointer;
+}
+
+.saque a:hover,
+.deposito a:hover,
+.transferencia a:hover,
+.cadastroPix a:hover,
+.exclusaoPix a:hover,
+.transferirPix a:hover {
+	background: #27ca65;
+}
+
+/* --------------------------- */
+
+.cadastroPix div, .exclusaoPix div, .transferirPix div, .consultaPix div {
+	margin-bottom: 5px;
+}
+
+.cadastroPix #conteudoChave, .exclusaoPix #conteudoChaveExcluir, .transferirPix input {
+	padding: 10px;
+	width: 300px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.cadastroPix .conteudo {
+	margin: 20px 0px;
+}
+
+.consultaPix p {
+	margin-bottom: 15px;
+}
+
+hr {
+	margin: 15px 0px;
+}
+
+/* --------------------------- */
+
+footer {
+	grid-column: 1 / 9;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.15rem;
+	background: #1ab455;
+	color: #fff;
+	position: relative;
+	padding: 50px;
+	margin-top: 100px;
+}
+
+footer h2 {
+	margin-bottom: 10px;
+}
+
+footer p {
+	margin-bottom: 5px;
+}
+
+footer a {
+	color: #fff;
+}

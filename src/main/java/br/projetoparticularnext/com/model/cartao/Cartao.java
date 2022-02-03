@@ -44,6 +44,10 @@ public class Cartao {
 		this.isAtivo = isAtivo;
 		this.compras = new ArrayList<Compra>();
 	}
+	
+	public Cartao() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Long getId() {
 		return id;

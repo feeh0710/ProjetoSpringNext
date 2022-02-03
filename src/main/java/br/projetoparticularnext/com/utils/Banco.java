@@ -36,14 +36,14 @@ public class Banco {
 		Cliente cliente1 = new Cliente("1234", "luizfernando962@gmail.com", "43546219830", "447218402",
 				"Fernando Silveira",
 				new Endereco("Cesario Lange", "SP", "Centro", "1759", "Rua do Comercio", "18285-000"));
-		Conta conta = new Conta(cliente1, TipoConta.ContaCorrente);// 1
+		Conta conta = new Conta(cliente1, TipoConta.CORRENTE);// 1
 		Pix pix = new Pix();
 		pix.ativarChave(TipoChavePix.CPF, "43546219830", true);
 		conta.getListPix().add(pix);
 		cadastraConta(conta.getNumero(), conta);
 		Cliente cliente2 = new Cliente("1234", "isabela@gmail.com", "43096078882", "447218402", "Isabela Silveira",
 				new Endereco("Cesario Lange", "SP", "Centro", "1759", "Rua do Comercio", "18285-000"));
-		Conta conta2 = new Conta(cliente2, TipoConta.ContaPoupanca);// 1
+		Conta conta2 = new Conta(cliente2, TipoConta.POUPANCA);// 1
 		Pix pix2 = new Pix();
 		pix2.ativarChave(TipoChavePix.CPF, "43096078882", true);
 		conta2.getListPix().add(pix2);
@@ -83,7 +83,7 @@ public class Banco {
 			if (tipoConta.getValue().getCliente().getCpf().equals(cpf)
 					&& tipoConta.getValue().getCliente().getSenha().equals(senha)) {
 //				System.out.println("ENCONTRADO:" + tipoConta.getValue().getTipoConta());
-				if (tipoConta.getValue().getTipoConta() == TipoConta.ContaCorrente) {
+				if (tipoConta.getValue().getTipoConta() == TipoConta.CORRENTE) {
 					cc = tipoConta.getValue();
 				} else {
 					cp = tipoConta.getValue();

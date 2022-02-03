@@ -1,5 +1,7 @@
 package br.projetoparticularnext.com.model.cliente;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,8 +47,8 @@ public class Cliente {
 	@Column(name = "ds_rg")
 	private String rg;
 	
-	@OneToOne(mappedBy = "cliente")
-	private Conta conta;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Conta> listConta;
 
 	public Cliente(String senha, String email, String cpf, String rg, String nome, Endereco endereco) {
 		this.cpf = cpf;
@@ -55,7 +57,7 @@ public class Cliente {
 		this.endereco = endereco;
 		this.email = email;
 		this.senha = senha;
-		this.tipo = TipoCliente.PREMIUM;
+		this.tipo = TipoCliente.COMUM;
 	}
 	
 	public Cliente() {
@@ -117,5 +119,32 @@ public class Cliente {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
+
+	public List<Conta> getListConta() {
+		return listConta;
+	}
+
+	public void setListConta(List<Conta> listConta) {
+		this.listConta = listConta;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", cpf=" + cpf + ", nome=" + nome + ", email=" + email + ", senha=" + senha
+				+ ", tipo=" + tipo + "]";
+	}
+	
+	
 
 }

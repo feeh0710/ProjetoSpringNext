@@ -1,5 +1,7 @@
 package br.projetoparticularnext.com;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,18 +30,18 @@ public class ProjetoSpringNextApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Cliente cliente = new Cliente("1234", "ze@ze.com", "12345678910", "447215450", "Jusé Pinto",
+		Cliente cliente = new Cliente("1234", "ze@ze.com", "43546219830", "447215450", "Jusé Pinto",
 				new Endereco("Cesario longe", "SP", "Centro", "2220", "Rua do zé", "182850000"));
 		
-		Conta conta = new Conta(cliente,TipoConta.ContaCorrente);
+		Conta conta = new Conta(cliente,TipoConta.CORRENTE);
+		Conta conta2 = new Conta(cliente,TipoConta.POUPANCA);
 		
 		CartaoCredito cartaoCredito = new CartaoCredito("visa", "1234", true, 5000, "25/02/2022");
 		
 		conta.setCredito(cartaoCredito);
+		cliente.setListConta(Arrays.asList(conta,conta2));
 		
-		contaService.createConta(conta);
-		
-		
+		clienteService.createCliente(cliente);
 	}
 
 }

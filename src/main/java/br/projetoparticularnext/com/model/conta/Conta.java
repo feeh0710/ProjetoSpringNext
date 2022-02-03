@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -37,8 +38,8 @@ public class Conta {
 	@Column(name = "ds_saldo")
 	private double saldo;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "cliente_id")
+	@ManyToOne
+	@JoinColumn(name = "id_conta")
 	private Cliente cliente;
 	
 	@Column(name = "ds_tipo")
@@ -64,6 +65,10 @@ public class Conta {
 
 	public void setListPix(List<Pix> listPix) {
 		this.listPix = listPix;
+	}
+	
+	public Conta() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Conta(Cliente cliente, TipoConta tipoConta) {
@@ -134,6 +139,16 @@ public class Conta {
 	public void setDebito(CartaoDebito debito) {
 		this.debito = debito;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
 	
 	
 
