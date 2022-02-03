@@ -20,4 +20,8 @@ public class ClienteService {
 	public Cliente buscaCpfSenha(String cpf,String senha) {
 		return clienteRepository.findByCpfAndSenha(cpf,senha);
 	}
+	
+	public Cliente getCliente(Long id) {
+		return clienteRepository.getById(id);
+	}
 }

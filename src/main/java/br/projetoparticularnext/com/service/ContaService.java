@@ -1,5 +1,6 @@
 package br.projetoparticularnext.com.service;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class ContaService {
 	public List<Conta> getAllContas(Long id_cliente) {
 		return contaRepository.findAllContaByClienteId(id_cliente);
 	}
+	
+	public void setAll(List<Conta> contas) {
+		contaRepository.saveAll(contas);
+	}
 
 	public List<Conta> createContas(List<Conta> contas) {
 		return contaRepository.saveAll(contas);
@@ -27,6 +32,10 @@ public class ContaService {
 
 	public Conta getConta(long id) {
 		return contaRepository.getById(id);
+	}
+
+	public void setConta(Conta conta) {
+		createConta(conta);
 	}
 	
 	
