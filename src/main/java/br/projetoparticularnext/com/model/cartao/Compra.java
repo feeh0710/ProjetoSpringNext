@@ -29,7 +29,9 @@ public class Compra {
 	@JoinColumn(name = "id_cartao")
 	private Cartao cartao;
 	
-	
+	public Compra() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Compra(double valor, String descricao) {
 		this.dataCompra = Utils.dataAtual();
@@ -70,6 +72,16 @@ public class Compra {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+		
+		
+	}
+
+	public Cartao getCartao() {
+		return cartao;
+	}
+
+	public void setCartao(Cartao cartao) {
+		this.cartao = cartao;
 	}
 	
 	

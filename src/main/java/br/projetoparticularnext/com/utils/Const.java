@@ -1,9 +1,17 @@
 package br.projetoparticularnext.com.utils;
 
+import br.projetoparticularnext.com.model.cartao.Apolice;
+
 public class Const {
 	// TAXAS E RENDIMENTO
 	public static final double TAXA_DEBITO = 0.03;
 	public static final double TAXA_CREDITO = 0.45;
+	
+	//NUM REGRAS
+	public static final int NUM_REGRA_MORTE = 0;
+	public static final int NUM_REGRA_DESEMPREGO = 1;
+	public static final int NUM_REGRA_INVALIDEZ = 2;
+	
 	
 	// REGRAS DE APOLICE
 	public static final String[] REGRA_MORTE = 
@@ -38,6 +46,7 @@ public class Const {
 	public static final double TAXA_SEGURO_MORTE = 36.0;
 	public static final double TAXA_SEGURO_INVALIDEZ = 26.0;
 	public static final double TAXA_SEGURO_DESEMPREGO = 16.0;
+	public static Apolice APOLICE_PROVISORIA = null;
 	
 	//IDS CLASSES
 	public static int CONTAS_CRIADAS = 1;
@@ -52,5 +61,7 @@ public class Const {
 	//CONTANTE PROVISORIA ID CLIENTE
 	public static Long ID_CLIENTE_LOGADO;
 	public static Long ID_CONTA_LOGADA;
+	public static int TIPO_CONTA_LOGADO;
+	public static double TAXA_TOTAL_APOLICE;
 
 }

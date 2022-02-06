@@ -44,10 +44,11 @@ public class Apolice {
 		this.dataCarencia = Utils.getDateAddDays(Const.DIAS_DE_CARENCIA_APOLICE);//
 		this.seguro = seguro;
 	}
-
-	private int newId() {
-		return Const.APOLICES_CRIADOS++;
+	
+	public Apolice() {
+		// TODO Auto-generated constructor stub
 	}
+
 
 	public Long getId() {
 		return id;
@@ -96,5 +97,28 @@ public class Apolice {
 	public void setAnos(int anos) {
 		this.anos = anos;
 	}
+	
+	
+
+	public CartaoCredito getCartaoCredito() {
+		return cartaoCredito;
+	}
+
+	public void setCartaoCredito(CartaoCredito cartaoCredito) {
+		this.cartaoCredito = cartaoCredito;
+	}
+
+	public void setDataCarencia(String dataCarencia) {
+		this.dataCarencia = dataCarencia;
+	}
+
+	@Override
+	public String toString() {
+		return "Apolice [id=" + id + ", dataAssinatura=" + dataAssinatura + ", dataCarencia=" + dataCarencia
+				+ ", dataValidade=" + dataValidade + ", anos=" + anos + ", seguro=" + seguro + ", cartaoCredito="
+				+ cartaoCredito + "]";
+	}
+	
+	
 
 }

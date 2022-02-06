@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banco Next | Transferência</title>
+<title>Banco Next | Cartão</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -15,8 +15,8 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-<link th:href="@{/styles/dashboard.css}" rel="stylesheet" />
-<link rel="shortcut icon" th:href="@{/imagens/next.png}">
+<link th:href="@{/styles/style.css}" rel="stylesheet" />
+<link rel="shortcut icon" th:href="@{../imagens/next.png}">
 </head>
 
 <body>
@@ -25,34 +25,18 @@
 			<a href="index.html"> Banco Next </a>
 		</h1>
 		<ul>
-			<li><a href="areaLogado"> <strong>Minha Área</strong>
+			<li><a href="areaLogado.html"> <strong>Voltar</strong>
 			</a></li>
-			<li><a href="menu/areacartoes"> Cartões </a></li>
-			<li><a href="menu/areapix"> Área PIX </a></li>
-			<li><a href="/"> Sair </a></li>
 		</ul>
 	</header>
-	<div class="container">
+	<div class="container" th:object="${conta}">
 
-
-		<section class="transferencia">
-			<fieldset>
-				<form action="tranfereentrecontas" method="POST">
-					<legend> Transferência </legend>
-					<p>
-						<strong> Saldo: </strong><span th:text="${conta.saldo}"> R$
-							0.0 </span>
-					</p>
-					<label for="valorTransferencia"> Valor Transferência: </label> <input
-						type="number" name="valor"
-						placeholder="Informe o valor da transferência"> <label
-						for="contaDestino"> Conta Destino: </label> <input type="text"
-						name="destino" placeholder="Informe o número da conta destino">
-
-
-					<button class="btn btn-success" type="submit">Transferir</button>
-				</form>
-			</fieldset>
+		<section class="cartoes">
+			<h2>Informe qual cartão deseja acessar</h2>
+			<div>
+				<a class="btn" href="/arealogado/cartao/debito/"> Débito </a> <a
+					class="btn" href="/arealogado/cartao/credito/"> Crédito </a>
+			</div>
 		</section>
 
 
@@ -82,6 +66,7 @@
 		</div>
 	</footer>
 
-	<script src="js/script.js"></script>
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+
 </body>
 </html>

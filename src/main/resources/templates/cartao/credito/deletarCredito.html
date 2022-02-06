@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banco Next | Transferência</title>
+<title>Banco Next | Deletar Credito</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -29,33 +29,35 @@
 			</a></li>
 			<li><a href="menu/areacartoes"> Cartões </a></li>
 			<li><a href="menu/areapix"> Área PIX </a></li>
-			<li><a href="/"> Sair </a></li>
+			<li><a href="/"> Voltar </a></li>
 		</ul>
 	</header>
-	<div class="container">
+	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}"
+		th:if="${erro}"></div>
+	<div class="alert alert-success mt-2" role="alert" th:text="${success}"
+		th:if="${success}"></div>
+	<div class="container" th:object="${credito}">
 
 
-		<section class="transferencia">
-			<fieldset>
-				<form action="tranfereentrecontas" method="POST">
-					<legend> Transferência </legend>
-					<p>
-						<strong> Saldo: </strong><span th:text="${conta.saldo}"> R$
-							0.0 </span>
-					</p>
-					<label for="valorTransferencia"> Valor Transferência: </label> <input
-						type="number" name="valor"
-						placeholder="Informe o valor da transferência"> <label
-						for="contaDestino"> Conta Destino: </label> <input type="text"
-						name="destino" placeholder="Informe o número da conta destino">
-
-
-					<button class="btn btn-success" type="submit">Transferir</button>
-				</form>
-			</fieldset>
+		<section class="deposito">
+			<form action="deletar" method="POST">
+				<h2>Deletar Cartão</h2>
+				<h6>
+					<strong>Número Cartão:</strong><span th:text="${credito.numero}">
+						2222.3333.4444.5555 </span>
+				</h6>
+				<h6>
+					<strong>Bandeira:</strong><span th:text="${credito.bandeira}">
+						Visa </span>
+				</h6>
+				<h6>
+					<strong>Limite diário:</strong><span th:text="${credito.limite}">
+						R$ 1.000,00 </span>
+				</h6>
+				<button type="submit" class="btn btn-danger">Cancelar
+					Cartão</button>
+			</form>
 		</section>
-
-
 	</div>
 	<footer>
 		<div>
@@ -81,7 +83,6 @@
 			<p>Banco Next © Alguns direitos reservados.</p>
 		</div>
 	</footer>
-
-	<script src="js/script.js"></script>
+	<!-- <script src="js/script.js"></script> -->
 </body>
 </html>

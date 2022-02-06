@@ -32,6 +32,7 @@ public class EscolhaContaController {
 	public String tipoConta(@PathVariable(value = "id") long id, Model model) {
 		Conta conta = contaService.getConta(id);
 		Const.ID_CONTA_LOGADA = conta.getId();
+//		Const.TIPO_CONTA_LOGADO = conta.getTipoConta().ordinal();
 		System.err.println("entrou no escolha conta tipo");
 		model.addAttribute("conta",conta);
 		return "/arealogado";

@@ -14,4 +14,9 @@ public class ApoliceService {
 	public Apolice criaApolice(Apolice apolice) {
 		return apoliceRepository.save(apolice);
 	}
+
+	public void delete(Long id) {
+		System.out.println("CHEGOU O ID '_' "+ id);
+		apoliceRepository.deleteById(id);
+	}
 }

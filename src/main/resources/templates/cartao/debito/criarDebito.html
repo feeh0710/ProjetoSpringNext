@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banco Next | Transferência</title>
+<title>Banco Next | Depósito</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -27,36 +27,42 @@
 		<ul>
 			<li><a href="areaLogado"> <strong>Minha Área</strong>
 			</a></li>
-			<li><a href="menu/areacartoes"> Cartões </a></li>
+			<li><a href="escolhaCartao"> Cartões </a></li>
 			<li><a href="menu/areapix"> Área PIX </a></li>
-			<li><a href="/"> Sair </a></li>
+			<li><a href="/arealogado/cartao/debito/"> Voltar </a></li>
 		</ul>
 	</header>
-	<div class="container">
+	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}"
+		th:if="${erro}"></div>
+	<div class="alert alert-success mt-2" role="alert" th:text="${success}"
+		th:if="${success}"></div>
+
+	<div class="container" th:object="${conta}">
 
 
-		<section class="transferencia">
-			<fieldset>
-				<form action="tranfereentrecontas" method="POST">
-					<legend> Transferência </legend>
-					<p>
-						<strong> Saldo: </strong><span th:text="${conta.saldo}"> R$
-							0.0 </span>
-					</p>
-					<label for="valorTransferencia"> Valor Transferência: </label> <input
-						type="number" name="valor"
-						placeholder="Informe o valor da transferência"> <label
-						for="contaDestino"> Conta Destino: </label> <input type="text"
-						name="destino" placeholder="Informe o número da conta destino">
+		<section class="deposito">
+			<form action="criar" method="POST">
+				<select name="bandeira">
+					<option disabled>Selecione...</option>
+					<option th:value="master">Master</option>
+					<option th:value="visa">Visa</option>
+					<option th:value="elo">Elo</option>
+				</select> <label for="limiteDiario"> Limite Diário: </label> <input
+					type="text" id="limitePorTransacao"
+					placeholder="Informe o limite diário de transação"
+					name="limitePorTransacao"> <label for="senhaDebito">
+					Senha: </label> <input type="password" id="senha"
+					placeholder="Crie uma senha de 4 dígitos" maxlength="4"
+					name="senha">
 
-
-					<button class="btn btn-success" type="submit">Transferir</button>
-				</form>
-			</fieldset>
+				<div class="div-cartoes"></div>
+				<button type="submit" class="btn btn-success">Criar Cartão</button>
+			</form>
 		</section>
 
 
 	</div>
+
 	<footer>
 		<div>
 			<h2>Endereço</h2>
@@ -82,6 +88,6 @@
 		</div>
 	</footer>
 
-	<script src="js/script.js"></script>
+	<!-- <script src="js/script.js"></script> -->
 </body>
 </html>

@@ -33,7 +33,7 @@ public class Cartao {
 	private String senha;
 	@Column(name = "ds_isativo")
 	private boolean isAtivo;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Compra> compras;
 
@@ -44,7 +44,7 @@ public class Cartao {
 		this.isAtivo = isAtivo;
 		this.compras = new ArrayList<Compra>();
 	}
-	
+
 	public Cartao() {
 		// TODO Auto-generated constructor stub
 	}
@@ -95,11 +95,6 @@ public class Cartao {
 
 	public void setAtivo(boolean isAtivo) {
 		this.isAtivo = isAtivo;
-	}
-
-	// gera contas
-	private int novoId() {
-		return Const.CARTOES_CRIADOS++;
 	}
 
 	public List<Compra> getCompras() {

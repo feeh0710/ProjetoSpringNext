@@ -17,8 +17,8 @@ public class Seguro {
 	@GeneratedValue(generator = "seguro" ,strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_seguro")
 	private Long id;
-	@Column(name = "ds_regras")
-	private String regras[];
+	@Column(name = "nm_regra")
+	private int regra;
 	@Column(name = "ds_valor")
 	private double valor;
 	@Column(name = "ds_taxa")
@@ -36,7 +36,11 @@ public class Seguro {
 		this.nome = tipoSeguro.name();
 		this.valor = buscaValorApolice(tipoSeguro);
 		this.taxa = buscaTaxaApolice(tipoSeguro);
-		this.regras = buscaRegra(tipoSeguro);
+		this.regra = buscaRegra(tipoSeguro);
+	}
+	
+	public Seguro() {
+		// TODO Auto-generated constructor stub
 	}
 
 	private double buscaTaxaApolice(TipoSeguro tipoSeguro) {
@@ -48,7 +52,7 @@ public class Seguro {
 	}
 
 	//BUSCA REGRA APÓS INICIALIZAR CONSTRUTOR
-	private String[] buscaRegra(TipoSeguro tipoSeguro) {
+	private int buscaRegra(TipoSeguro tipoSeguro) {
 		return tipoSeguro.getRegra();
 	}
 
@@ -60,12 +64,12 @@ public class Seguro {
 		this.nome = nome;
 	}
 
-	public String[] getRegras() {
-		return regras;
+	public int getRegras() {
+		return regra;
 	}
 
-	public void setRegras(String[] regras) {
-		this.regras = regras;
+	public void setRegra(int regras) {
+		this.regra = regras;
 	}
 
 	public TipoSeguro getTipoSeguro() {
@@ -90,6 +94,26 @@ public class Seguro {
 
 	public void setTaxa(double taxa) {
 		this.taxa = taxa;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Apolice getApolice() {
+		return apolice;
+	}
+
+	public void setApolice(Apolice apolice) {
+		this.apolice = apolice;
+	}
+
+	public int getRegra() {
+		return regra;
 	}
 	
 	

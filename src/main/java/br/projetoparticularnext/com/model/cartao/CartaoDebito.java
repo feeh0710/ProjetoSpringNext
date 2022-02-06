@@ -24,6 +24,10 @@ public class CartaoDebito extends Cartao {
 		super(Utils.geraBlocosNumeros(4), bandeira, senha, isAtivo);
 		this.limitePorTransacao = limitePorTransacao;
 	}
+	
+	public CartaoDebito() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public double getLimitePorTransacao() {
 		return limitePorTransacao;
@@ -32,5 +36,22 @@ public class CartaoDebito extends Cartao {
 	public void setLimitePorTransacao(double limitePorTransacao) {
 		this.limitePorTransacao = limitePorTransacao;
 	}
+
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
+
+	@Override
+	public String toString() {
+		return "CartaoDebito [limitePorTransacao=" + limitePorTransacao + ", conta=" + conta + "]";
+	}
+	
+	
+	
+	
 
 }

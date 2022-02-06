@@ -16,6 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import br.projetoparticularnext.com.model.cartao.CartaoCredito;
 import br.projetoparticularnext.com.model.cartao.CartaoDebito;
@@ -43,7 +47,11 @@ public class Conta {
 	private Cliente cliente;
 	
 	@Column(name = "ds_tipo")
-	private TipoConta tipoConta;
+	private String tipoConta;
+	//private TipoConta tipoConta;
+	
+	private int tipo;
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Pix> listPix;
@@ -76,15 +84,16 @@ public class Conta {
 		this.numero = novaConta();
 		this.saldo = 0.0;
 		this.cliente = cliente;
-		this.tipoConta = tipoConta;
+		this.tipo = tipoConta.getCode();
+		this.tipoConta = tipoConta.getDescricao();
 		this.data = Utils.dataAtual();
 	}
 
-	public TipoConta getTipoConta() {
+	public String getTipoConta() {
 		return tipoConta;
 	}
 
-	public void setTipoConta(TipoConta tipoConta) {
+	public void setTipoConta(String tipoConta) {
 		this.tipoConta = tipoConta;
 	}
 
@@ -147,6 +156,25 @@ public class Conta {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	
+
+	public int getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+	@Override
+	public String toString() {
+		return "Conta [id=" + id + ", numero=" + numero + ", saldo=" + saldo + ", cliente=" + cliente + ", tipoConta="
+				+ tipoConta + ", listPix=" + listPix + ", credito=" + credito + ", debito=" + debito + ", data=" + data
+				+ "]";
+	}
+	
+	
 	
 	
 	

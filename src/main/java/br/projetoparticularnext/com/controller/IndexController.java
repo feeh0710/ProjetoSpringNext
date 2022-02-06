@@ -36,7 +36,6 @@ public class IndexController {
 	public String loginCliente(@ModelAttribute("cpfLogin") String cpf, @ModelAttribute("senhaLogin") String senha,
 			Model model, RedirectAttributes redirAttrs) {
 		System.err.println(cpf + senha);
-		cpf = ValidaCPF.removeCaracteresEspeciais(cpf);
 //		cpf = "43546219830";
 //		senha = "1234";
 		Cliente c = clienteService.buscaCpfSenha(cpf, senha);
@@ -57,22 +56,22 @@ public class IndexController {
 		Cliente cliente = new Cliente(cliend.getSenha(), cliend.getEmail(), cliend.getCpf(), cliend.getRg(), cliend.getNome(), endereco);
 		
 		if(cliend.getTipo().equals("3")) {
-			Conta conta1 = new Conta(cliente,TipoConta.CORRENTE);
-			Conta conta2 = new Conta(cliente,TipoConta.POUPANCA);
+			Conta conta1 = new Conta(cliente,TipoConta.CONTACORRENTE);
+			Conta conta2 = new Conta(cliente,TipoConta.CONTAPOUPANCA);
 			cliente.setListConta(Arrays.asList(conta1,conta2));
 			clienteService.createCliente(cliente);
 			Const.ID_CLIENTE_LOGADO = cliente.getId();
 			redirAttrs.addFlashAttribute("cadastro", "Usuário e conta corrente+poupança cadastradas com sucesso!\n realize login");
 			return "redirect:/";
 		}else if(cliend.getTipo().equals("2")) {
-			Conta conta2 = new Conta(cliente,TipoConta.POUPANCA);
+			Conta conta2 = new Conta(cliente,TipoConta.CONTAPOUPANCA);
 			cliente.setListConta(Arrays.asList(conta2));
 			clienteService.createCliente(cliente);
 			Const.ID_CLIENTE_LOGADO = cliente.getId();
 			redirAttrs.addFlashAttribute("cadastro", "Usuário e conta poupança cadastradas com sucesso!\n realize login!");
 			return "redirect:/";
 		}else {
-			Conta conta1 = new Conta(cliente,TipoConta.CORRENTE);
+			Conta conta1 = new Conta(cliente,TipoConta.CONTACORRENTE);
 			cliente.setListConta(Arrays.asList(conta1));
 			clienteService.createCliente(cliente);
 			Const.ID_CLIENTE_LOGADO = cliente.getId();

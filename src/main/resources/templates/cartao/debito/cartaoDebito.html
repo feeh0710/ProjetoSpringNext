@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banco Next | Transferência</title>
+<title>Banco Next | Cartão Débito</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -15,44 +15,41 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-<link th:href="@{/styles/dashboard.css}" rel="stylesheet" />
+<link th:href="@{/styles/style.css}" rel="stylesheet" />
 <link rel="shortcut icon" th:href="@{/imagens/next.png}">
 </head>
 
 <body>
 	<header>
 		<h1>
-			<a href="index.html"> Banco Next </a>
+			<a href="../index.html"> Banco Next </a>
 		</h1>
 		<ul>
-			<li><a href="areaLogado"> <strong>Minha Área</strong>
+			<li><a href="arealogado/"> Minha Área </a></li>
+			<li><a href="../escolhaCartao.html"> <strong>Cartões</strong>
 			</a></li>
-			<li><a href="menu/areacartoes"> Cartões </a></li>
-			<li><a href="menu/areapix"> Área PIX </a></li>
+			<li><a href="../pix.html"> Área PIX </a></li>
 			<li><a href="/"> Sair </a></li>
 		</ul>
 	</header>
-	<div class="container">
+	<div class="container" th:object="${conta}">
 
+		<div class="alert alert-danger mt-2" role="alert" th:text="${erro}"
+			th:if="${erro}"></div>
+		<div class="alert alert-success mt-2" role="alert" th:text="${ok}"
+			th:if="${ok}"></div>
 
-		<section class="transferencia">
-			<fieldset>
-				<form action="tranfereentrecontas" method="POST">
-					<legend> Transferência </legend>
-					<p>
-						<strong> Saldo: </strong><span th:text="${conta.saldo}"> R$
-							0.0 </span>
-					</p>
-					<label for="valorTransferencia"> Valor Transferência: </label> <input
-						type="number" name="valor"
-						placeholder="Informe o valor da transferência"> <label
-						for="contaDestino"> Conta Destino: </label> <input type="text"
-						name="destino" placeholder="Informe o número da conta destino">
-
-
-					<button class="btn btn-success" type="submit">Transferir</button>
-				</form>
-			</fieldset>
+		<section class="cartoes">
+			<h2>Cartão Débito</h2>
+			<div class="debito">
+				<a href="criar" class="btn" th:if="${ncadastrado}"
+					th:text="${ncadastrado}"> Solicitar Cartão </a> <a href="deletar"
+					class="btn-excluir" th:if="${cadastrado}"> Excluír </a> <a
+					href="ativar" class="btn-ativo" th:text="${ativado}"
+					th:if="${ativado}"> </a> <a href="comprar" class="btn-comprar"
+					th:if="${desbloqueado}"> Comprar </a> <a href="consultar"
+					class="btn-consultar" th:if="${ativado}"> Consultar </a>
+			</div>
 		</section>
 
 
@@ -82,6 +79,6 @@
 		</div>
 	</footer>
 
-	<script src="js/script.js"></script>
+	<!-- <script type="text/javascript" th:src="@{/js/scriptDebito.js}"></script> -->
 </body>
 </html>

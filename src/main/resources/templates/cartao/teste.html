@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Banco Next | Cartão Débito </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link th:href="@{/styles/style.css}" rel="stylesheet" />
+	<link rel="shortcut icon" th:href="@{/imagens/next.png}">
+</head>
+
+<body>
+   
+        <form th:action="@{/arealogado/cartao/teste/{id}(id = ${id})}" method="POST" th:object=${debito}>
+        <h1 th:text="${id}"></h1>
+        	<select name = "bandeira">
+            <option disabled> Selecione... </option>
+            <option  th:value="master"> Master </option>
+            <option  th:value="visa"> Visa </option>
+            <option  th:value="elo"> Elo </option>
+	        </select>
+	        <label for="limiteDiario" > Limite Diário: </label>
+	        <input type="text" id="limitePorTransacao" placeholder="Informe o limite diário de transação" name="limitePorTransacao">
+	
+	        <label for="senhaDebito"> Senha: </label>
+	        <input type="password" id="senha" placeholder="Crie uma senha de 4 dígitos" maxlength="4"  name="senha">
+	
+	        <div class="div-cartoes">
+	            
+	            <a href="" class="btn-cancelar"> Cancelar </a>
+	        </div>
+	        <button type="submit" class="btn-finalizarModal"> Criar </button>
+        </form>
+        
+   
+</body>
+</html>

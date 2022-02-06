@@ -1,11 +1,19 @@
 package br.projetoparticularnext.com.controller;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.Order;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.projetoparticularnext.com.model.cliente.TipoCliente;
@@ -65,17 +73,20 @@ public class AreaLogadoController {
 		model.addAttribute("conta",conta);
         return "/transferir";
     }
-    @GetMapping("areacartoes")
+    @GetMapping("escolhaCartao")
     public String chamaCartoes(Model model) {
     	Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
 		model.addAttribute("conta",conta);
-        return "/cartoes";
+		Const.TIPO_CONTA_LOGADO = conta.getTipo();
+        return "cartao/escolhaCartao";
     }
+    
+    
     @GetMapping("areapix")
     public String chamaAreaPix(Model model) {
     	Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
 		model.addAttribute("conta",conta);
-        return "/pix";
+        return "/pix/pix";
     }
   
     
@@ -115,10 +126,16 @@ public class AreaLogadoController {
    	}
 	
     @PostMapping("tranfereentrecontas")
-    public String transfere(Model model,int valor,int destino, RedirectAttributes redirAttrs) {
+    public String transfere(Model model,int valor,long destino, RedirectAttributes redirAttrs) {
     	System.err.println("TRANSFERINDO: "+valor+" PARA: "+destino);
    		Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
-   		Conta contaDestino = contaService.getConta(destino);
+   		Conta contaDestino = null;
+   		try {
+   			Optional<Conta> result = contaService.findall(destino);
+   			contaDestino = result.get();
+		} catch (NoSuchElementException e) {
+			System.err.println("não encontrado");
+		}
    		if(conta != null && contaDestino != null) {
    			if(conta.getSaldo() >= valor) {
    				conta.setSaldo(conta.getSaldo()-valor);
