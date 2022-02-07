@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banco Next | Consultar Apólice</title>
+<title>Banco Next | Contratar Seguro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -21,96 +21,111 @@
 
 <body>
 	<header>
-		<h1>
-			<a> Banco Next </a>
-		</h1>
+		<h1 class="text-white font-weight-bold">Banco Next</h1>
 		<ul>
-			<li><a href="/areaLogado"> Minha Área </a></li>
-			<li><a href="/arealogado/cartao"> <strong>Cartões</strong>
+			<li><a href="/menu/arealogado">Minha Área
 			</a></li>
-			<li><a href="/arealogado/pix"> Área PIX </a></li>
-			<li><a href="/"> Sair </a></li>
+			<li><a href="/arealogado/escolhaCartao"><strong> Cartões </strong></a></li>
+			<li><a href="/menu/pix"> Área PIX </a></li>
+			<li><a href="/menu/seguros"> Cancelar </a></li>
 		</ul>
 	</header>
 
-	<div class="container">
+	<section class="" th:object="${conta}">
+		<section>
+			<fieldset style="border: 1px solid #000;" class="col-7 mx-auto mt-3">
+				<form action="contratar" method="POST" class="row">
+					<legend class="col-12 m-auto py-2 text-center"> --------
+						CONTRATO DO SEGURO -------- </legend>
+					<legend class="col-12 m-auto py-2 text-center"> -------
+						DADOS DO CONTRATANTE -------- </legend>
+					<p class="col-7 m-auto">
+						<strong> -Nome do Segurado: </strong><span
+							th:text="${conta.cliente.nome}"> Nome </span>
+					</p>
 
-		<section class="seguros" th:object="${conta}">
-			<section class="seguroMorte">
-				<fieldset>
-					
-						<legend>  --------  CONTRATO DO SEGURO   -------- </legend>
-						<legend>  -------  DADOS DO CONTRATANTE  -------- </legend>
-						<p>
-							<strong> -Nome do Segurado: </strong><span th:text="${conta.cliente.nome}"> Nome </span>
-						</p>
-						
-						<p>
-							<strong> -CPF do Segurado: </strong><span th:text="${conta.cliente.cpf}"> Nome </span>
-						</p>
-						<p>
-							<strong> -Data da Contratação: </strong><span th:text="${conta.credito.apolice.dataAssinatura}"> Nome </span>
-						</p>
-						
-						<p>
-							<strong> -Data Limite Carencia: </strong><span th:text="${conta.credito.apolice.dataCarencia}"> Nome </span>
-						</p>
-						<p>
-							<strong> -Validade desta Apolice: </strong><span th:text="${conta.credito.apolice.dataValidade}"> Nome </span>
-						</p>
-						
-						<p>
-							<strong> -Tipo de Seguro contratado: </strong><span th:text="${conta.credito.apolice.seguro.tipoSeguro.name}"> Nome </span>
-						</p>
+					<p class="col-7 m-auto">
+						<strong> -CPF do Segurado: </strong><span
+							th:text="${conta.cliente.cpf}"> Nome </span>
+					</p>
+					<p class="col-7 m-auto">
+						<strong> -Data da Contratação: </strong><span
+							th:text="${conta.credito.apolice.dataAssinatura}"> Nome </span>
+					</p>
 
-						<p>
-							<strong> -Taxa da Apolice: </strong><span th:text="${conta.credito.apolice.seguro.taxa}"> Nome </span>
-						</p>
-						
-						<legend>  -------------  REGRAS  ---------------- </legend>
-						<p>
-							<strong th:each="regra : ${regras}">  
-								<strong th:text="${regra}"></strong><br>
-							</strong>
-						</p>
-						<!--ESPACO-->
-						<legend>  -------------  CONDIÇÃO  -------------- </legend>
-						<p>
-							Eu <strong th:text="${conta.cliente.nome}"> </strong><span> aceito todas as    condições propostas 
-							neste contrato estipulado na presente data. </span>
-						</p>
-						<p>
-							<span> "Todos os nossos seguros garantem recuperação de 100% do valor investido pelo segurado. </span>
-						</p>
-						<legend>  -----------  ACIONAR SEGURO   ----------</legend>
-						<p>
-							<strong> Valor do seguro: </strong><span th:text="${conta.credito.apolice.seguro.valor}"> Nome </span>
-						</p>
-						
-						<p>
-							<strong> Taxa anual do seguro: </strong><span th:text="${conta.credito.apolice.seguro.taxa}"> Nome </span>
-						</p>
-						<p>
-							<strong> Vigencia da solicitação apartir de </strong><span th:text="${conta.credito.apolice.dataCarencia}"> Nome </span>
-						</p>
-						
-						<p>
-							<strong> Valor que será debitado no ato da contratação com base em  </strong><span th:text="${conta.credito.apolice.anos}"> Nome </span>  anos de contrato:
-						</p>
-						<p>
-							<strong th:text="${valortotal}"></strong>
-						</p>
-						<p>
-							<strong>Cesário Lange 30 de Fevereiro de 1850          Empresa Fulano de tal LTDA</strong>
-						</p>
-						<a href="/arealogado/cartao/credito/seguro" class="btn btn-outlinhe-primary">voltar</a>
-					
-				
-				</fieldset>
-			</section>
+					<p class="col-7 m-auto">
+						<strong> -Data Limite Carencia: </strong><span
+							th:text="${conta.credito.apolice.dataCarencia}"> Nome </span>
+					</p>
+					<p class="col-7 m-auto">
+						<strong> -Validade desta Apolice: </strong><span
+							th:text="${conta.credito.apolice.dataValidade}"> Nome </span>
+					</p>
+
+					<p class="col-7 m-auto">
+						<strong> -Tipo de Seguro contratado: </strong><span
+							th:text="${conta.credito.apolice.seguro.tipoSeguro.name}">
+							Nome </span>
+					</p>
+
+					<p class="col-7 m-auto">
+						<strong> -Taxa da Apolice: </strong><span
+							th:text="${conta.credito.apolice.seguro.taxa}"> Nome </span>
+					</p>
+
+					<legend class="col-12 m-auto py-2 text-center">
+						------------- REGRAS ---------------- </legend>
+					<p class="col-7 m-auto">
+						<strong th:each="regra : ${regras}"> <strong
+							th:text="${regra}"></strong><br>
+						</strong>
+					</p>
+					<!--ESPACO-->
+					<legend class="col-12 m-auto py-2 text-center">
+						------------- CONDIÇÃO -------------- </legend>
+					<p class="col-7 m-auto">
+						Eu <strong th:text="${conta.cliente.nome}"> </strong><span>
+							aceito todas as condições propostas neste contrato estipulado na
+							presente data. </span>
+					</p>
+					<p class="col-7 m-auto">
+						<span> "Todos os nossos seguros garantem recuperação de
+							100% do valor investido pelo segurado. </span>
+					</p>
+					<legend class="col-12 m-auto py-2 text-center">
+						----------- ACIONAR SEGURO ----------</legend>
+					<p class="col-7 m-auto">
+						<strong> Valor do seguro: </strong><span
+							th:text="${conta.credito.apolice.seguro.valor}"> Nome </span>
+					</p>
+
+					<p class="col-7 m-auto">
+						<strong> Taxa anual do seguro: </strong><span
+							th:text="${conta.credito.apolice.seguro.taxa}"> Nome </span>
+					</p>
+					<p class="col-7 m-auto">
+						<strong> Vigencia da solicitação apartir de </strong><span
+							th:text="${conta.credito.apolice.dataCarencia}"> Nome </span>
+					</p>
+
+					<p class="col-7 m-auto">
+						<strong> Valor que será debitado no ato da contratação
+							com base em </strong><span th:text="${conta.credito.apolice.anos}">
+							Nome </span> anos de contrato:
+					</p>
+					<p class="col-7 m-auto">
+						<strong th:text="${valortotal}"></strong>
+					</p>
+					<p class="col-12 m-auto text-center">
+						<strong>Cesário Lange 30 de Fevereiro de 1850 Empresa
+							Fulano de tal LTDA</strong>
+					</p>
+					<a href="/arealogado/cartao/credito/seguro"
+						class="btn btn-success col-7 mx-auto mt-4 py-2 w-50">voltar</a>
+				</form>
+			</fieldset>
 		</section>
-
-	</div>
+	</section>
 
 	<footer>
 		<div>
@@ -136,7 +151,6 @@
 			<p>Banco Next © Alguns direitos reservados.</p>
 		</div>
 	</footer>
-
-	<script type="text/javascript" th:src="@{/js/script.js}"></script>
-</body>
+	<!-- 	<script type="text/javascript" th:src="@{/js/dashboard.js}"></script>
+ -->
 </html>

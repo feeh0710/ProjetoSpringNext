@@ -22,81 +22,71 @@
 <body>
 	<header>
 		<h1>
-			<a href="../index.html"> Banco Next </a>
+			<a class="text-white"> Banco Next </a>
 		</h1>
 		<ul>
-			<li><a href="../areaLogado.html"> Minha Área </a></li>
-			<li><a href="../escolhaCartao.html"> Cartões </a></li>
-			<li><a href="../pix.html"> <strong>Área PIX</strong>
+			<li><a href="/menu/arealogado"> Minha Área
 			</a></li>
-			<li><a href="../index.html"> Sair </a></li>
+			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
+			<li><a href="/menu/pix"> <strong> Área PIX </strong></a></li>
+			<li><a href="/menu/pix"> Voltar </a></li>
 		</ul>
 	</header>
-	<div class="container">
 
+	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}" th:if="${erro}"></div>
+	<div class="alert alert-success mt-2" role="alert" th:text="${ok}" th:if="${ok}"></div>
 
+	<div class="">
 		<section class="consultaPix">
-			<fieldset>
-				<legend> Consulta PIX </legend>
-				<div>
+			<div class="row text-center">
+				<h2 class="pt-3"> Consulta PIX </h2>
+			</div>
+			<fieldset class="row">
+				<div th:each="pix : ${listPix}" class="col-3">
 					<p>
-						<strong>Tipo Chave: </strong><span>CPF</span>
+						<strong>Tipo Chave: </strong><span th:text="${pix.tipoChave}"></span>
 					</p>
 					<p>
-						<strong>Conteúdo Chave: </strong><span>222.333.444-55</span>
+						<strong>Conteúdo Chave: </strong><span
+							th:text="${pix.conteudoChave}"></span>
 					</p>
 					<p>
-						<strong>Está Ativo?: </strong><span>Sim</span>
+						<strong>Está Ativo?: </strong><span th:text="${pix.isAtivado}"></span>
 					</p>
-					<a href="" class="btn-excluirPix"> Excluír </a>
+					<a class="btn btn-danger w-25"
+						th:href="@{/arealogado/pix/deletar/{id}(id=${pix.id})}">Deletar</a>
 				</div>
 				<hr>
-				<div>
-					<p>
-						<strong>Tipo Chave: </strong><span>E-MAIL</span>
-					</p>
-					<p>
-						<strong>Conteúdo Chave: </strong><span>gabriel@gmail.com</span>
-					</p>
-					<p>
-						<strong>Está Ativo?: </strong><span>Sim</span>
-					</p>
-					<a href="../pix.html" class="btn-excluirPix"> Excluír </a>
-				</div>
-				<div style="margin-top: 20px;">
-					<a href="" class="voltar"> Voltar </a>
-				</div>
 			</fieldset>
+			
 		</section>
-
-		
 	</div>
-	<footer>
-			<div>
-				<h2>Endereço</h2>
-				<p>
-					Avenida Brasil, 277 - <strong> CEP: </strong> 08125-377
-				</p>
-				<p>Alphaville</p>
-				<p>São Paulo / SP</p>
-			</div>
-			<div>
-				<h2>Mídias</h2>
-				<p>@banconext</p>
-				<p>next_next</p>
-				<p>
-					<a href="https://next.me/" target="_blank">https://next.me/</a>
-				</p>
-			</div>
-			<div>
-				<h2>Contato</h2>
-				<p>next.foursys@next.com</p>
-				<p>(11) 2025-2520</p>
-				<p>Banco Next © Alguns direitos reservados.</p>
-			</div>
-		</footer>
-
 	
+	<footer style="position:absolute; bottom: 0; width: 100%;">
+		<div>
+			<h2>Endereço</h2>
+			<p>
+				Avenida Brasil, 277 - <strong> CEP: </strong> 08125-377
+			</p>
+			<p>Alphaville</p>
+			<p>São Paulo / SP</p>
+		</div>
+		<div>
+			<h2>Mídias</h2>
+			<p>@banconext</p>
+			<p>next_next</p>
+			<p>
+				<a href="https://next.me/" target="_blank">https://next.me/</a>
+			</p>
+		</div>
+		<div>
+			<h2>Contato</h2>
+			<p>next.foursys@next.com</p>
+			<p>(11) 2025-2520</p>
+			<p>Banco Next © Alguns direitos reservados.</p>
+		</div>
+	</footer>
+
 	<script type="text/javascript" th:src="@{/js/script.js}"></script>
 </body>
 </html>

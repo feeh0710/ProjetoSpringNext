@@ -21,36 +21,34 @@
 
 <body>
 	<header>
-		<h1>
-			<a href="../index.html"> Banco Next </a>
-		</h1>
+		<h1 class="text-white font-weight-bold">Banco Next</h1>
 		<ul>
-			<li><a href="../areaLogado.html"> Minha Área </a></li>
-			<li><a href="../escolhaCartao.html"> <strong>Cartões</strong>
+			<li><a href="/menu/arealogado">Minha Área
 			</a></li>
-			<li><a href="../pix.html"> Área PIX </a></li>
-			<li><a href="../index.html"> Sair </a></li>
+			<li><a href="/arealogado/escolhaCartao"> <strong> Cartões </strong></a></li>
+			<li><a href="/menu/pix"> Área PIX </a></li>
+			<li><a href="/menu/seguros"> Voltar </a></li>
 		</ul>
 	</header>
-	<div class="container">
+
+	<div class="">
 		<div class=row>
-			<form action="simular" method="POST">
-				<h5>Selecione o tipo de seguro</h5>
+			<form action="simular" method="POST" class="col-2 py-4 m-auto">
+				<h5 class="mt-4 mb-3">Tipo de seguro</h5>
 				<select name="tipo">
 					<option disabled>Selecione...</option>
 					<option th:value="0">Seguro Morte</option>
 					<option th:value="1">Seguro Desemprego</option>
 					<option th:value="2">Seguro Invalidez</option>
 				</select> 
-				<label for="tempoSeguroM"><strong>Tempo Seguro:</strong></label>
-							<input type="number" id="tempoSeguroM" name="tempo"
-								placeholder="Informe o tempo de contratação">		
-				<button type="submit" class="btn btn-success mt-2 ">Simular Apolice</button>
+				<label for="tempoSeguroM" class="d-block mt-3"><strong>Tempo Seguro:</strong></label>
+				<input type="number" id="tempoSeguroM" class="mb-2 mt-1 w-100 p-1" name="tempo" placeholder="Informe o tempo de contratação">		
+				<button type="submit" class="btn btn-success w-100 mt-2 d-block"> Simular Apolice </button>
 			</form>
 		</div>
 	</div>
 	
-	<footer>
+	<footer style="position: absolute; bottom: 0; width: 100%;">
 		<div>
 			<h2>Endereço</h2>
 			<p>

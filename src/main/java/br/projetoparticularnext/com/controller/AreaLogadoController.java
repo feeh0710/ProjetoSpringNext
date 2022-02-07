@@ -81,17 +81,7 @@ public class AreaLogadoController {
         return "cartao/escolhaCartao";
     }
     
-    
-    @GetMapping("areapix")
-    public String chamaAreaPix(Model model) {
-    	Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
-		model.addAttribute("conta",conta);
-        return "/pix/pix";
-    }
-  
-    
-    
-    
+   
     @PostMapping("saca")
 	public String sacar(Model model,int valor, RedirectAttributes redirAttrs) {
 		System.err.println("SACANDO: "+valor);

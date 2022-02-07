@@ -30,7 +30,7 @@ public class ProjetoSpringNextApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Cliente cliente = new Cliente("1234", "ze@ze.com", "435.462.198-30", "447215450", "João da Silva",
+		Cliente cliente = new Cliente("1234", "ze@ze.com", "111.111.111-11", "447215450", "João da Silva","15991434950",
 				new Endereco("Cesario longe", "SP", "Centro", "2220", "Rua do zé", "182850000"));
 		
 		Conta conta = new Conta(cliente,TipoConta.CONTACORRENTE);

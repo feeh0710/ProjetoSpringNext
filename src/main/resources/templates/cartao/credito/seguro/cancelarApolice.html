@@ -22,23 +22,22 @@
 <body>
 	<header>
 		<h1>
-			<a> Banco Next </a>
+			<a class="text-white"> Banco Next </a>
 		</h1>
 		<ul>
-			<li><a href="/areaLogado"> Minha Área </a></li>
-			<li><a href="/arealogado/cartao"> <strong>Cartões</strong>
+			<li><a href="/menu/arealogado"> <strong>Minha Área</strong>
 			</a></li>
-			<li><a href="/arealogado/pix"> Área PIX </a></li>
-			<li><a href="/"> Sair </a></li>
+			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
+			<li><a href="/menu/pix"> Área PIX </a></li>
+			<li><a href="/"> Voltar </a></li>
 		</ul>
 	</header>
 
 	<div class="container">
-		
 		<section class="seguros" th:object="${conta}">
 			<section class="seguroMorte">
 				<fieldset>					
-						<form action="cancelar" method="POST">
+						<form action="cancelar" method="POST" class="p-5" style="border: 1px solid #000">
 							<legend>  -- DETALHES DA APÓLICE -- </legend>
 							<p>
 								<strong> -Data da Contratação: </strong><span th:text="${conta.credito.apolice.dataAssinatura}"> Nome </span>
@@ -59,7 +58,7 @@
 								<strong> -Taxa anual da Apolice: </strong><span th:text="${conta.credito.apolice.seguro.taxa}"> Nome </span>
 							</p>
 							<div class="d-grid gap-2">
-							  <button class="btn btn-outline-danger" >Cancelar Apolice</button>
+							  <button class="btn btn-danger p-2" >Cancelar Apolice</button>
 							</div>
 						</form>
 					

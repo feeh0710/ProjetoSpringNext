@@ -21,51 +21,35 @@
 
 <body>
 	<header>
-		<h1>
-			<a href="../index.html"> Banco Next </a>
-		</h1>
+		<h1 class="text-white font-weight-bold">Banco Next</h1>
 		<ul>
-			<li><a href="../areaLogado.html"> Minha Área </a></li>
-			<li><a href="../escolhaCartao.html"> Cartões </a></li>
-			<li><a href="../pix.html"> <strong>Área PIX</strong>
+			<li><a href="/menu/arealogado"> Minha Área
 			</a></li>
-			<li><a href="../index.html"> Sair </a></li>
+			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
+			<li><a href="/menu/pix"> <strong> Área PIX </strong> </a></li>
+			<li><a href="/menu/pix"> Voltar </a></li>
 		</ul>
 	</header>
-	<div class="container">
 
-
+	<div class="">
 		<section class="cadastroPix">
-			<fieldset>
-				<legend> Cadastro PIX </legend>
-				<div>
-					<input type="radio" id="chaveCpf" name="chave"> CPF
-				</div>
-				<div>
-					<input type="radio" id="chaveEmail" name="chave"> E-mail
-				</div>
-				<div>
-					<input type="radio" id="chaveTelefone" name="chave">
-					Telefone
-				</div>
-				<div>
-					<input type="radio" id="chaveAleatorio" name="chave">
-					Aleatório
-				</div>
-
-				<div class="conteudo">
-					<label for="conteudoChave"> <strong>Conteúdo
-							Chave:</strong>
-					</label> <input type="text" id="conteudoChave"
-						placeholder="Informe o conteúdo da chave escolhida">
-				</div>
-				<a href="../pix.html"> Cadastrar </a>
+			<fieldset class="row">
+				<form action="cadastrar" method="POST" class="col-12 text-center m-auto">
+				<h5 class="mt-5">Selecione o tipo chave Pix</h5>
+				<select name="tipochave" class="mx-auto my-2 p-2">
+					<option disabled>Selecione...</option>
+					<option th:value="0">CPF</option>
+					<option th:value="1">Email</option>
+					<option th:value="2">Telefone</option>
+					<option th:value="3">Chave Aleatoria</option>
+				</select> 
+				<button type="submit" class="btn btn-success mt-4 ">Cadastrar chave pix</button>
+			</form>
 			</fieldset>
 		</section>
-
-
 	</div>
-	<footer>
+	
+	<footer style="position:absolute; bottom: 0; width: 100%;">
 		<div>
 			<h2>Endereço</h2>
 			<p>

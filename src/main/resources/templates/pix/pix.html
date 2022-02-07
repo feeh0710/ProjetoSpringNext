@@ -21,25 +21,24 @@
 
 <body>
 	<header>
-		<h1>
-			<a href="index.html"> Banco Next </a>
-		</h1>
+		<h1 class="text-white font-weight-bold">Banco Next</h1>
 		<ul>
-			<li><a href="areaLogado"> <strong>Minha Área</strong>
+			<li><a href="/menu/arealogado"> Minha Área
 			</a></li>
-			<li><a href="menu/areacartoes"> Cartões </a></li>
-			<li><a href="menu/areapix"> Área PIX </a></li>
+			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
+			<li><a href="/menu/pix"><strong> Área PIX </strong></a></li>
 			<li><a href="/"> Sair </a></li>
 		</ul>
 	</header>
+	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}" th:if="${erro}" ></div>
+	<div class="alert alert-success mt-2" role="alert" th:text="${ok}" th:if="${ok}" ></div>
 	<div class="container">
 		<section class="pix">
 			<h2>PIX</h2>
 			<div>
-				<a href="cadastrar"> Cadastrar </a> <a
-					href="excluir"> Excluír </a> <a
-					href="consultar"> Consultar </a> <a
-					href="transferir"> Transferir </a>
+					<a th:href="${cadastrar}" th:if="${cadastrar}"> Cadastrar</a>				
+					<a th:href="${consultar}" th:if="${consultar}"> Consultar</a>
+					<a th:href="${transferir}" th:if="${transferir}"> Transferir </a>
 			</div>
 		</section>
 	</div>

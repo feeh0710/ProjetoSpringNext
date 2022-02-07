@@ -21,41 +21,37 @@
 
 <body>
 	<header>
-		<h1>
-			<a href="../index.html"> Banco Next </a>
-		</h1>
+		<h1 class="text-white font-weight-bold">Banco Next</h1>
 		<ul>
-			<li><a href="../areaLogado.html"> Minha Área </a></li>
-			<li><a href="../escolhaCartao.html"> Cartões </a></li>
-			<li><a href="../pix.html"> <strong>Área PIX</strong>
+			<li><a href="/menu/arealogado"> Minha Área
 			</a></li>
-			<li><a href="../index.html"> Sair </a></li>
+			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
+			<li><a href="/menu/pix"> <strong> Área PIX </strong> </a></li>
+			</a></li>
+			<li><a href="/menu/pix"> Voltar </a></li>
 		</ul>
 	</header>
-	<div class="container">
 
-
+	<div class="">
 		<section class="transferirPix">
 			<fieldset>
-				<legend> Transferir Via PIX </legend>
-				<div>
-					<label for="chaveDestino"> <strong>PIX destinário:</strong>
-					</label> <input type="text" id="chaveDestino"
-						placeholder="Informe o conteúdo da chave de destino PIX">
+				<legend class="text-center"> Transferir Via PIX </legend>
+				<form action="transferir" method="POST" class="m-auto text-center">
+					<div>
+					<label for="chaveDestino" class="d-block"> <strong >PIX destinário:</strong></label> 
+					<input type="text" id="chavedestino" class="mb-3 w-25 p-2" name="chavedestino" placeholder="Informe o conteúdo da chave de destino PIX">
 				</div>
 				<div>
-					<label for="valorPix"> <strong>Valor
-							transferência:</strong>
-					</label> <input type="text" id="valorPix"
-						placeholder="Informe o valor da transferência PIX">
+					<label for="valorPix" class="d-block"> <strong>Valor transferência:</strong> </label> 
+					<input type="number" id="valor" class="w-25 p-2" name="valor" placeholder="Informe o valor da transferência PIX">
 				</div>
-				<a href="../pix.html"> Transferir </a>
+				<button class="btn btn-success mt-3 w-25">Transferir</button>
+				</form>
 			</fieldset>
 		</section>
-
-
 	</div>
-	<footer>
+
+	<footer style="position: absolute; bottom: 0px; width:100%;">
 		<div>
 			<h2>Endereço</h2>
 			<p>

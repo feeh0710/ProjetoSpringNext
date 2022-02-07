@@ -37,15 +37,21 @@ public class CartaoCreditoController {
 	
 	@PostMapping("criar")
 	public ModelAndView create( ModelAndView modelAndView,
-			RedirectAttributes attributes, CartaoCredito credito, BindingResult result) {
-		System.err.println("ANTES DO IF");
+			RedirectAttributes attributes, String senha,String bandeira, BindingResult result) {
+		System.err.println("ANTES DO IF" +bandeira+senha);
 		if (!result.hasErrors()) {
 			Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
 			System.err.println("ENTROU NO CADASTRA");
+			CartaoCredito credito = new CartaoCredito();
+			credito.setSenha(senha);
+			credito.setBandeira(bandeira);
 			credito.setAtivo(true);
 			credito.setNumero(Utils.geraBlocosNumeros(4));
 			credito.setLimite(conta.getCliente().getTipo().getLimite());
+			credito.setDataVencimento(Utils.getDateAdd1Month());
 			conta.setCredito(credito);
+			//credito.setConta(conta);
+			System.out.println(credito.toString());
 			contaService.createConta(conta);
 			modelAndView.setViewName("cartao/credito/cartaoCredito");
 			modelAndView.addObject("ok", "Cartao de credito criado com limite aprovado de "+credito.getLimite());
@@ -221,14 +227,14 @@ public class CartaoCreditoController {
 			return modelAndView;
 		}
 	}
-	@GetMapping("seguros")
-    public ModelAndView chamaSeguro( ModelAndView modelAndView,CartaoCredito credito) {
-		System.err.println("chamou seguro");
-    	Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
-    	modelAndView.addObject("conta",conta);
-    	modelAndView.setViewName("cartao/credito/criarCredito");
-		return modelAndView;
-    }
+//	@GetMapping("seguros")
+//    public ModelAndView chamaSeguro( ModelAndView modelAndView,CartaoCredito credito) {
+//		System.err.println("chamou seguro");
+//    	Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
+//    	modelAndView.addObject("conta",conta);
+//    	modelAndView.setViewName("cartao/credito/criarCredito");
+//		return modelAndView;
+//    }
 	
 	
 	

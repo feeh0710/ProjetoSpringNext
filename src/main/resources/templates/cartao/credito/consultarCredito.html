@@ -22,48 +22,48 @@
 
 <body>
 	<header>
-		<h1>Banco Next</h1>
+		<h1 class="text-white">Banco Next</h1>
 		<ul>
-			<li><a href="../areaLogado.html"> Minha Área </a></li>
-			<li><a href="cartaoDebito.html"> <strong>Cartões</strong>
+			<li><a href="/menu/arealogado"> <strong>Minha Área</strong>
 			</a></li>
-			<li><a href="../pix.html"> Área PIX </a></li>
+			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
+			<li><a href="/menu/pix"> Área PIX </a></li>
 			<li><a href="/arealogado/cartao/credito/"> Voltar </a></li>
 		</ul>
 	</header>
 	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}" th:if="${erro}" ></div>
 	<div class="alert alert-success mt-2" role="alert" th:text="${ok}" th:if="${ok}" ></div>
-	<div class="container" th:object="${conta}">
-		<div class="row  justify-content-between">
-			<div class = "col-6">
-				<div class="col-3">
+	<div class="cnotainer" th:object="${conta}">
+		<div class="row justify-content-between">
+			<div class = "col-12">
+				<div class="col-6 m-auto pt-4">
 					<p>
 						<strong> Fatura atual: </strong><span th:text="${conta.credito.valorFatura}"> R$ 0.0 </span>
 							<form method="POST" action="pagarfatura">
-							    <button type="submit" class="btn btn-outline-primary">Pagar fatura</button>
+							    <button type="submit" class="btn btn-outline-success">Pagar fatura</button>
 							</form> 
 					</p>
 				</div>
-				<div class="col-3">
+				<div class="col-6 m-auto">
 					<p>
 						<strong> Limite disponivel: </strong><span th:text="${conta.credito.limite}"
 							th:if="${conta.credito.limite}"> </span>
 					</p>
 				</div>
-				<div class="col-3">
+				<div class="col-6 m-auto">
 					<p>
 						<strong> Saldo disponivel: </strong><span th:text="${conta.saldo}"
 							th:if="${conta.saldo}"> R$ 0.0 </span>
 					</p>
 				</div>
-				<div class="col-3">
+				<div class="col-6 m-auto">
 					<p>
 						<strong>Vencimento Fatura: </strong><span th:text="${conta.credito.dataVencimento}"
 							th:if="${conta.credito.dataVencimento}"> </span>
 					</p>
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-6 m-auto">
 				<legend> Dados do Cartão </legend>
 				<p>
 					<strong>Número cartão:</strong><span  th:text="${conta.credito.numero}"> 2222.3333.4444.5555 </span>
@@ -74,20 +74,20 @@
 				<hr>
 			</div>
 		</div>
-		<div class="row">
+		<div class="col-6 m-auto">
 			<h2>Compras</h2>
 			<div class="list-group" th:each="compra : ${conta.credito.compras}">
-				<a href="#"
-					class="list-group-item list-group-item-action flex-column align-items-start active">
+				<a href="#" class="list-group-item list-group-item-success list-group-item-action flex-column align-items-start active">
 					<div class="d-flex w-100 justify-content-between">
 						<h5 class="mb-1" th:text="${compra.descricao}">Descrição item</h5>
+						<p>R$ <span class="mb-1" th:text="${compra.valor}">valor</span></p>
 						<small th:text="${compra.dataCompra}">data Compra</small>
 					</div>
-					<p class="mb-1" th:text="${compra.valor}">valor</small>
 				</a>
 			</div>
 		</div>
 	</div>
+
 	<footer>
 		<div>
 			<h2>Endereço</h2>

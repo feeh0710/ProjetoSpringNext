@@ -15,7 +15,7 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-<link th:href="@{/styles/dashboard.css}" rel="stylesheet" />
+<link th:href="@{/styles/style.css}" rel="stylesheet" />
 <link rel="shortcut icon" th:href="@{/imagens/next.png}">
 </head>
 
@@ -25,39 +25,35 @@
 			<a href="index.html"> Banco Next </a>
 		</h1>
 		<ul>
-			<li><a href="areaLogado"> <strong>Minha Área</strong>
+			<li><a href="/menu/arealogado"> <strong>Minha Área</strong>
 			</a></li>
-			<li><a href="menu/areacartoes"> Cartões </a></li>
-			<li><a href="menu/areapix"> Área PIX </a></li>
+			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
+			<li><a href="/menu/pix"> Área PIX </a></li>
 			<li><a href="/"> Sair </a></li>
 		</ul>
 	</header>
-	<div class="container">
 
-
+	<div class="">
 		<section class="transferencia">
 			<fieldset>
-				<form action="tranfereentrecontas" method="POST">
+				<form action="tranfereentrecontas" method="POST" class="text-center">
 					<legend> Transferência </legend>
-					<p>
-						<strong> Saldo: </strong><span th:text="${conta.saldo}"> R$
-							0.0 </span>
+					<p class="saldo">
+						<strong> Saldo: </strong><span th:text="${conta.saldo}"> R$ 0.0 </span>
 					</p>
-					<label for="valorTransferencia"> Valor Transferência: </label> <input
-						type="number" name="valor"
-						placeholder="Informe o valor da transferência"> <label
-						for="contaDestino"> Conta Destino: </label> <input type="text"
-						name="destino" placeholder="Informe o número da conta destino">
+					<label for="valorTransferencia" class="d-block mb-2"> Valor Transferência: </label>
+					<input type="number" name="valor" class="p-1" placeholder="Informe o valor da transferência">
+					
+					<label for="contaDestino" class="d-block my-2"> Conta Destino: </label>
+					<input type="text" name="destino" class="p-1" placeholder="Informe o número da conta destino">
 
-
-					<button class="btn btn-success" type="submit">Transferir</button>
+					<button class="btn btn-success d-block mt-3 m-auto botaoFuncao" type="submit">Transferir</button>
 				</form>
 			</fieldset>
 		</section>
-
-
 	</div>
-	<footer>
+
+	<footer style="position:absolute; bottom: 0px; width: 100%;">
 		<div>
 			<h2>Endereço</h2>
 			<p>

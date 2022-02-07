@@ -37,6 +37,9 @@ public class Cliente {
 	@Column(name = "ds_senha")
 	private String senha;
 	
+	@Column(name = "ds_telefone")
+	private String telefone;
+	
 	@Column(name = "ds_tipo")
 	private TipoCliente tipo;
 	
@@ -50,8 +53,9 @@ public class Cliente {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Conta> listConta;
 
-	public Cliente(String senha, String email, String cpf, String rg, String nome, Endereco endereco) {
+	public Cliente(String senha, String email, String cpf, String rg, String nome,String telefone, Endereco endereco) {
 		this.cpf = cpf;
+		this.telefone = telefone;
 		this.rg = rg;
 		this.nome = nome;
 		this.endereco = endereco;
@@ -62,6 +66,16 @@ public class Cliente {
 	
 	public Cliente() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getEmail() {

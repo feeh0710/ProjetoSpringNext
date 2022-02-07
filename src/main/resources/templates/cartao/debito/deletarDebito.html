@@ -15,54 +15,46 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-<link th:href="@{/styles/dashboard.css}" rel="stylesheet" />
+<link th:href="@{/styles/style.css}" rel="stylesheet" />
 <link rel="shortcut icon" th:href="@{/imagens/next.png}">
 </head>
 
 <body>
 	<header>
-		<h1>
-			<a href="index.html"> Banco Next </a>
+		<h1 class="text-white">
+			 Banco Next 
 		</h1>
 		<ul>
-			<li><a href="areaLogado"> <strong>Minha Área</strong>
+			<li><a href="/menu/arealogado"> Minha Área
 			</a></li>
-			<li><a href="menu/areacartoes"> Cartões </a></li>
-			<li><a href="menu/areapix"> Área PIX </a></li>
-			<li><a href="/"> Sair </a></li>
+			<li><a href="/arealogado/escolhaCartao"> <strong> Cartões </strong> </a></li>
+			<li><a href="/menu/pix"> Área PIX </a></li>
+			<li><a href="/arealogado/cartao/debito/"> Voltar </a></li>
 		</ul>
 	</header>
-	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}"
-		th:if="${erro}"></div>
 
-	<div class="alert alert-success mt-2" role="alert" th:text="${success}"
-		th:if="${success}"></div>
-	<div class="container" th:object="${debito}">
+	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}" th:if="${erro}"></div>
+	<div class="alert alert-success mt-2" role="alert" th:text="${success}" th:if="${success}"></div>
 
-
-		<section class="deposito">
-			<form action="deletar" method="POST">
-				<h2>Deletar Cartão</h2>
-				<h6>
-					<strong>Número Cartão:</strong><span th:text="${debito.numero}">
-						2222.3333.4444.5555 </span>
+	<div class="" th:object="${debito}">
+		<section>
+			<form action="deletar" method="POST" class="m-auto text-center pt-5">
+				<h2 class="pb-3">Deletar Cartão</h2>
+				<h6 class="pb-2">
+					<strong>Número Cartão:</strong><span th:text="${debito.numero}"> 2222.3333.4444.5555 </span>
 				</h6>
-				<h6>
-					<strong>Bandeira:</strong><span th:text="${debito.bandeira}">
-						Visa </span>
+				<h6 class="pb-2">
+					<strong>Bandeira:</strong><span th:text="${debito.bandeira}"> Visa </span>
 				</h6>
-				<h6>
-					<strong>Limite diário:</strong><span
-						th:text="${debito.limitePorTransacao}"> R$ 1.000,00 </span>
+				<h6 class="pb-2">
+					<strong>Limite diário:</strong><span th:text="${debito.limitePorTransacao}"> R$ 1.000,00 </span>
 				</h6>
-				<button type="submit" class="btn btn-danger">Cancelar
-					Cartão</button>
+				<button type="submit" class="btn btn-danger">Cancelar Cartão</button>
 			</form>
 		</section>
-
-
 	</div>
-	<footer>
+
+	<footer style="position:absolute; width: 100%; bottom: 0;">
 		<div>
 			<h2>Endereço</h2>
 			<p>

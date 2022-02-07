@@ -127,6 +127,7 @@ public class SeguroController {
 			if(conta.getSaldo() >= Const.TAXA_TOTAL_APOLICE) {
 				conta.setSaldo(conta.getSaldo()-Const.TAXA_TOTAL_APOLICE);
 				conta.getCredito().setApolice(apolice);
+				apolice.setCartaoCredito(conta.getCredito());
 				contaService.createConta(conta);
 				seguroService.verificaSeguro(modelAndView, conta, "");
 				modelAndView.addObject("ok", "Apolice criada com sucesso! \n Debito de "+Const.TAXA_TOTAL_APOLICE+",00 aplicado");

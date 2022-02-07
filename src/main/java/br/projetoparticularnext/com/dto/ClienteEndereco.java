@@ -14,6 +14,16 @@ public class ClienteEndereco {
 	private String numero;
 	private String logradouro;
 	private String cep;
+	private String telefone;
+	
+	
+	
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 	public String getCpf() {
 		return cpf;
 	}

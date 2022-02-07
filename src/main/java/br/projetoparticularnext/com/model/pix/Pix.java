@@ -35,6 +35,32 @@ public class Pix  {
 		this.isAtivado = isAtivado;
 		return true;
 	}
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+	public Conta getConta() {
+		return conta;
+	}
+
+
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
+
+
 
 	public TipoChavePix getTipoChave() {
 		return tipoChave;

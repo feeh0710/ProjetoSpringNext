@@ -16,17 +16,17 @@
 </head>
 
 <body>
+	<header>
+		<h1 class="text-white font-weight-bold">Banco Next</h1>
+		<ul>
+			<li><a href="" id="btn-log"> Login </a></li>
+			<li><a href="" id="btn-add"> Cadastrar </a></li>
+		</ul>
+	</header>
 	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}"
 		th:if="${erro}"></div>
 	<div class="alert alert-success mt-2" role="alert"
 		th:text="${cadastro}" th:if="${cadastro}"></div>
-	<header>
-		<h1 class="text-white font-weight-bold">Banco Next</h1>
-		<ul>
-			<li><a href="" id="btn-log" class="link"> Login </a></li>
-			<li><a href="" id="btn-add" class="link"> Cadastrar </a></li>
-		</ul>
-	</header>
 	<div class="container">
 		<section class="log">
 			<fieldset>
@@ -59,8 +59,10 @@
 								id="rg" class="input" placeholder="Informe o seu RG"
 								maxlength="11"> <label for="emailCadastro">
 								E-mail: </label> <input type="text" name="email" class="input"
-								placeholder="Informe o seu e-mail"> <label
-								for="senhaCadastro"> Senha: </label> <input type="password"
+								placeholder="Informe o seu e-mail">
+								<label for="telefoneCadastro"> Telefone </label>
+								<input type="text" name="telefone" id="telefoneCadastro" class="input" placeholder="Informe o seu telefone">
+								<label for="senhaCadastro"> Senha: </label> <input type="password"
 								name="senha" class="input" placeholder="Crie uma senha"
 								maxlength="4"> <label for="tipoConta"> Tipo de
 								Conta: </label> <select class="tipoConta" name="tipo">
@@ -94,8 +96,8 @@
 						</fieldset>
 					</div>
 				</div>
-				<div class="row">
-					<button class="botao-cadastrar" type="submit">Cadastrar</button>
+				<div class="row m-auto">
+					<button class="btn btn-success m-auto col-6 p-2" type="submit"> Cadastrar </button>
 				</div>
 			</form>
 

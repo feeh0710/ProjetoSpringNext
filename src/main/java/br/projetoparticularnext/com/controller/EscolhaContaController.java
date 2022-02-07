@@ -24,6 +24,7 @@ public class EscolhaContaController {
 	public String escolhaconta(Model model) {
 		System.err.println("ENTRO NO ESCOLHA CONTA: "+Const.ID_CLIENTE_LOGADO);
 		List<Conta> contas = contaService.getAllContas(Const.ID_CLIENTE_LOGADO);
+		System.err.println(contas.size());
 		model.addAttribute("contas",contas);
 		return "escolhaconta";
 	}

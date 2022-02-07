@@ -21,35 +21,32 @@
 
 <body>
 	<header>
-		<h1>
-			<a href="../index.html"> Banco Next </a>
+		<h1 class="text-white">
+			 Banco Next 
 		</h1>
 		<ul>
-			<li><a href="../areaLogado.html"> Minha Área </a></li>
-			<li><a href="../escolhaCartao.html"> <strong>Cartões</strong>
+			<li><a href="/menu/arealogado"> Minha Área
 			</a></li>
-			<li><a href="../pix.html"> Área PIX </a></li>
-			<li><a href="../index.html"> Sair </a></li>
+			<li><a href="/arealogado/escolhaCartao"><strong> Cartões </strong></a></li>
+			<li><a href="/menu/pix"> Área PIX </a></li>
+			<li><a href="/"> Sair </a></li>
 		</ul>
 	</header>
 	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}" th:if="${erro}" ></div>
 		<div class="alert alert-success mt-2" role="alert" th:text="${ok}" th:if="${ok}" ></div>
-	<div class="container">
-
-		<div class="row  justify-content-between">
-			<div class="col-6">
-				<p>
-					<strong> Fatura atual: </strong><span th:text="${fatura}"
-						th:if="${fatura}"> R$ 0.0 </span>
+	<div class="d-flex justify-content-between">
+			<div class="px-5 py-3">
+				<p class="h4">
+					<strong> Fatura atual: </strong><span th:text="${fatura}" th:if="${fatura}"> R$ 0.0 </span>
 				</p>
 			</div>
-			<div class="col-6">
-				<p>
-					<strong> Limite disponivel: </strong><span th:text="${limite}"
-						th:if="${limite}"> </span>
+			<div class="px-5 py-3">
+				<p class="h4">
+					<strong> Limite disponivel: </strong><span th:text="${limite}" th:if="${limite}"> </span>
 				</p>
 			</div>
 		</div>
+	<div class="container">
 		<section class="cartoes">
 			<h2>Cartão Crédito</h2>
 			<div class="credito">

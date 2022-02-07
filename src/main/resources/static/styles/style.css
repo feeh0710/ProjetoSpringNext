@@ -22,7 +22,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background: #1ab455;
+	background: #208454;
 	padding: 30px;
 }
 
@@ -97,7 +97,7 @@ select {
 	font-weight: bold;
 	letter-spacing: 1.5px;
 	text-align: center;
-	background: #1ab455;
+	background: #208454;
 	color: #fff;
 	border: 1px solid #fff;
 	padding: 10px;
@@ -125,7 +125,7 @@ select {
 }
 
 .btn-logar:hover, .btn-avancar:hover, .btn-finalizar:hover {
-	background: #27ca65;
+	background: #208454;
 }
 
 /* --------------------------- */
@@ -163,7 +163,7 @@ select {
 }
 
 .funcoes a:hover, .cartoes a:hover, .pix a:hover, .seguros a:hover, .contas a:hover {
-	background: #27ca65;
+	background: #208454;
 	color: #fff;
 	border: 2px solid #fff;
 }
@@ -186,7 +186,7 @@ select {
 }
 
 .cartoes .credito {
-	overflow-x: scroll;
+	/*overflow-x: scroll;*/
 	width: 1100px;
 }
 
@@ -267,7 +267,7 @@ select {
 }
 
 .modal-inserir a:first-child {
-	background: #1ab455;
+	background: #208454;
 	color: #fff;
 }
 
@@ -283,7 +283,7 @@ footer {
 	justify-content: space-between;
 	align-items: center;
 	font-size: 1.15rem;
-	background: #1ab455;
+	background: #208454;
 	color: #fff;
 	position: relative;
 	padding: 30px;
@@ -302,3 +302,21 @@ footer a {
 	color: #fff;
 }
 
+a:hover {
+	color: #fff;
+}
+
+.btn-criar, .botaoFuncao {
+	width: 200px;
+}
+
+.saldo {
+	font-size: 1.5rem;
+	position: absolute;
+	right: 20px;
+}
+
+.div-botoes {
+	display: flex;
+	justify-content: center;
+}

@@ -46,6 +46,16 @@ public class CartaoCredito extends Cartao {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
 
 	public double getLimite() {
 		return limite;
@@ -81,6 +91,14 @@ public class CartaoCredito extends Cartao {
 	public void setApolice(Apolice apolice) {
 		this.apolice = apolice;
 	}
+
+	@Override
+	public String toString() {
+		return "CartaoCredito [limite=" + limite + ", dataVencimento=" + dataVencimento + ", valorFatura=" + valorFatura
+				+ ", apolice=" + apolice + ", conta=" + conta + "]";
+	}
+	
+	
 
 	
 	

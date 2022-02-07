@@ -22,18 +22,19 @@
 
 <body>
 	<header>
-		<h1>Banco Next</h1>
+		<h1 class="text-white">Banco Next</h1>
 		<ul>
-			<li><a href="../areaLogado.html"> Minha Área </a></li>
-			<li><a href="cartaoDebito.html"> <strong>Cartões</strong>
+			<li><a href="/menu/arealogado"> Minha Área
 			</a></li>
-			<li><a href="../pix.html"> Área PIX </a></li>
-			<li><a href=""> Voltar </a></li>
+			<li><a href="/arealogado/escolhaCartao"> <strong> Cartões </strong> </a></li>
+			<li><a href="/menu/pix"> Área PIX </a></li>
+			<li><a href="/arealogado/cartao/debito/"> Voltar </a></li>
 		</ul>
 	</header>
-	<div class="container">
-		<div class="row" th:object="${debito}">
-			<div col-sm>
+	
+	<div class="row">
+		<div th:object="${debito}">
+			<div class="col-5 m-auto pt-2">
 				<legend> Dados do Cartão </legend>
 				<p>
 					<strong>Número cartão:</strong><span  th:text="${debito.numero}"> 2222.3333.4444.5555 </span>
@@ -47,21 +48,21 @@
 				<hr>
 			</div>
 		</div>
-		<div class="row">
+		<div class="col-5 m-auto">
 			<h2>Compras</h2>
 			<div class="list-group" th:each="compra : ${compras}">
-				<a href="#"
-					class="list-group-item list-group-item-action flex-column align-items-start active">
+				<a href="#" class="list-group-item list-group-item-success list-group-item-action flex-column align-items-start active">
 					<div class="d-flex w-100 justify-content-between">
 						<h5 class="mb-1" th:text="${compra.descricao}">Descrição item</h5>
+						<p>R$ <span class="mb-1" th:text="${compra.valor}">valor</span></p>
 						<small th:text="${compra.dataCompra}">data Compra</small>
 					</div>
-					<p class="mb-1" th:text="${compra.valor}">valor</small>
 				</a>
 			</div>
 		</div>
 	</div>
-	<footer>
+
+	<footer style="position: relative; margin-top: 200px;">
 		<div>
 			<h2>Endereço</h2>
 			<p>

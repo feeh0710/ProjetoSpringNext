@@ -21,42 +21,39 @@
 
 <body>
 	<header>
-		<h1>Banco Next</h1>
+		<h1 class="text-white">Banco Next</h1>
 		<ul>
-			<li><a href="areaLogado"> Minha Área </a></li>
-			<li><a href="escolhaCartao"> <strong>Cartões</strong>
+			<li><a href="/menu/arealogado"> Minha Área
 			</a></li>
-			<li><a href="pix"> Área PIX </a></li>
+			<li><a href="/arealogado/escolhaCartao"><strong> Cartões </strong> </a></li>
+			<li><a href="/menu/pix"> Área PIX </a></li>
 			<li><a href="/arealogado/cartao/credito/"> Voltar </a></li>
 		</ul>
 	</header>
-	<div class="container">
 
-		<div class="alert alert-danger mt-2" role="alert" th:text="${erro}"
-			th:if="${erro}"></div>
-		<div class="alert alert-success mt-2" role="alert" th:text="${ok}"
-			th:if="${ok}"></div>
+	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}" th:if="${erro}"></div>
+	<div class="alert alert-success mt-2" role="alert" th:text="${ok}" th:if="${ok}"></div>
 
-		<section class="deposito">
-			<form action="comprar" method="POST">
-				<label for="nomeItem"> Nome Item: </label> <input type="text"
-					id="descricao" name="descricao"
-					placeholder="Informe o nome do item que deseja comprar"> <label
-					for="valorItem"> Valor Item: </label> <input type="number"
-					id="valor" name="valor"
-					placeholder="Informe o valor do item que deseja comprar"> <label
-					for="senhaDebito"> Digitar Senha: </label> <input type="password"
-					id="senha" placeholder="digite a senha de 4 dígitos" maxlength="4"
-					name="senha">
+	<div class="">
+		<section class="row m-auto text-center pt-2">
+			<h2> Faça sua compra </h2>
+			<form action="comprar" method="POST" class="col-12 m-auto">
+				<label for="nomeItem" class="d-block"> Nome Item: </label>
+				<input type="text" id="descricao" class="mb-3 p-1" name="descricao" placeholder="Informe o nome do item que deseja comprar">
+				
+				<label for="valorItem" class="d-block"> Valor Item: </label>
+				<input type="number" id="valor" class="mb-3 p-1" name="valor" placeholder="Informe o valor do item que deseja comprar">
+				
+				<label for="senhaDebito" class="d-block"> Digitar Senha: </label>
+				<input type="password" id="senha" class="mb-3 p-1" placeholder="digite a senha de 4 dígitos" maxlength="4" name="senha">
 
 				<div class="div-cartoes"></div>
 				<button type="submit" class="btn btn-success">Fazer compra</button>
 			</form>
 		</section>
-
-
 	</div>
-	<footer>
+
+	<footer style="position: absolute; bottom: 0; width: 100%;">
 		<div>
 			<h2>Endereço</h2>
 			<p>

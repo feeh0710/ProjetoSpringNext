@@ -21,27 +21,26 @@
 
 <body>
 	<header>
-		<h1>
-			<a href="index.html"> Banco Next </a>
-		</h1>
+		<h1 class="text-white font-weight-bold">Banco Next</h1>
 		<ul>
-			<li><a href="areaLogado.html"> <strong>Voltar</strong>
+			<li><a href="/menu/arealogado"> Minha Área
 			</a></li>
+			<li><a href="/arealogado/escolhaCartao"><strong> Cartões </strong></a></li>
+			<li><a href="/menu/pix"> Área PIX </a></li>
 		</ul>
 	</header>
-	<div class="container" th:object="${conta}">
 
+	<div class="text-center" th:object="${conta}">
 		<section class="cartoes">
 			<h2>Informe qual cartão deseja acessar</h2>
-			<div>
-				<a class="btn" href="/arealogado/cartao/debito/"> Débito </a> <a
-					class="btn" href="/arealogado/cartao/credito/"> Crédito </a>
+			<div class="div-botoes">
+				<a class="" href="/arealogado/cartao/debito/"> Débito </a>
+				<a class="" href="/arealogado/cartao/credito/"> Crédito </a>
 			</div>
 		</section>
-
-
 	</div>
-	<footer>
+	
+	<footer style="position:absolute; width: 100%; bottom: 0;">
 		<div>
 			<h2>Endereço</h2>
 			<p>

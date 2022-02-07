@@ -53,7 +53,7 @@ public class IndexController {
 	public String cadastraCliente(@ModelAttribute("clienteendereco") ClienteEndereco cliend, RedirectAttributes redirAttrs) {
 		System.out.println(cliend.toString());
 		Endereco endereco = new Endereco(cliend.getCidade(), cliend.getEstado(), cliend.getBairro(), cliend.getNumero(), cliend.getLogradouro(), cliend.getCep());
-		Cliente cliente = new Cliente(cliend.getSenha(), cliend.getEmail(), cliend.getCpf(), cliend.getRg(), cliend.getNome(), endereco);
+		Cliente cliente = new Cliente(cliend.getSenha(), cliend.getEmail(), cliend.getCpf(), cliend.getRg(), cliend.getNome(),cliend.getTelefone(), endereco);
 		
 		if(cliend.getTipo().equals("3")) {
 			Conta conta1 = new Conta(cliente,TipoConta.CONTACORRENTE);
