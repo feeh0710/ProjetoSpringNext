@@ -21,13 +21,12 @@
 
 <body>
 	<header>
-		<h1 class="text-white font-weight-bold">Banco Next</h1>
+		<h1 class=titulo>Banco Next</h1>
 		<ul>
-			<li><a href="/menu/arealogado"> Minha Área
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
-			<li><a href="/menu/pix"><strong> Área PIX </strong></a></li>
-			<li><a href="/"> Sair </a></li>
+			<li><a href="/menu/arealogado" class="link_menu"> Minha Área</a></li>
+			<li><a href="/arealogado/escolhaCartao" class="link_menu"> Cartões </a></li>
+			<li><a href="/menu/pix" class="titulo"><strong> Área PIX </strong></a></li>
+			<li><a href="/" class="link_menu"> Sair </a></li>
 		</ul>
 	</header>
 	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}" th:if="${erro}" ></div>
@@ -36,9 +35,9 @@
 		<section class="pix">
 			<h2>PIX</h2>
 			<div>
-					<a th:href="${cadastrar}" th:if="${cadastrar}"> Cadastrar</a>				
-					<a th:href="${consultar}" th:if="${consultar}"> Consultar</a>
-					<a th:href="${transferir}" th:if="${transferir}"> Transferir </a>
+					<a class="botaoMenuCartao" th:href="${cadastrar}" th:if="${cadastrar}"> Cadastrar</a>				
+					<a class="botaoMenuCartao" th:href="${consultar}" th:if="${consultar}"> Consultar</a>
+					<a class="botaoMenuCartao" th:href="${transferir}" th:if="${transferir}"> Transferir </a>
 			</div>
 		</section>
 	</div>
@@ -56,7 +55,7 @@
 				<p>@banconext</p>
 				<p>next_next</p>
 				<p>
-					<a href="https://next.me/" target="_blank">https://next.me/</a>
+					<a href="https://next.me/" class="link_next" target="_blank">https://next.me/</a>
 				</p>
 			</div>
 			<div>

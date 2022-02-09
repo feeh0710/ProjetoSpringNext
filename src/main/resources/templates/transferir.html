@@ -21,15 +21,12 @@
 
 <body>
 	<header>
-		<h1>
-			<a href="index.html"> Banco Next </a>
-		</h1>
+		<h1><a href="index.html" class="titulo"> Banco Next </a></h1>
 		<ul>
-			<li><a href="/menu/arealogado"> <strong>Minha Área</strong>
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
-			<li><a href="/"> Sair </a></li>
+			<li><a href="/menu/arealogado" class="titulo"> <strong>Minha Área</strong></a></li>
+			<li><a href="/arealogado/escolhaCartao" class="link_menu"> Cartões </a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/" class="link_menu"> Sair </a></li>
 		</ul>
 	</header>
 
@@ -41,13 +38,13 @@
 					<p class="saldo">
 						<strong> Saldo: </strong><span th:text="${conta.saldo}"> R$ 0.0 </span>
 					</p>
-					<label for="valorTransferencia" class="d-block mb-2"> Valor Transferência: </label>
-					<input type="number" name="valor" class="p-1" placeholder="Informe o valor da transferência">
+					<label for="valorTransferencia" class="d-block mb-2 editar"> Valor Transferência: </label>
+					<input type="number" name="valor" class="p-2 w-25 editarInput" placeholder="Informe o valor da transferência">
 					
-					<label for="contaDestino" class="d-block my-2"> Conta Destino: </label>
-					<input type="text" name="destino" class="p-1" placeholder="Informe o número da conta destino">
+					<label for="contaDestino" class="d-block my-2 editar"> Conta Destino: </label>
+					<input type="text" name="destino" class="p-2 w-25 editarInput" placeholder="Informe o número da conta destino">
 
-					<button class="btn btn-success d-block mt-3 m-auto botaoFuncao" type="submit">Transferir</button>
+					<button class="btn btn-success d-block mt-3 w-25 m-auto botaoGeral" type="submit">Transferir</button>
 				</form>
 			</fieldset>
 		</section>

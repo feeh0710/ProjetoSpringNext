@@ -21,13 +21,12 @@
 
 <body>
 	<header>
-		<h1 class="text-white">Banco Next</h1>
+		<h1 class="titulo">Banco Next</h1>
 		<ul>
-			<li><a href="/menu/arealogado"> Minha Área
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"><strong> Cartões </strong> </a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
-			<li><a href="/arealogado/cartao/credito/"> Voltar </a></li>
+			<li><a href="/menu/arealogado" class="link_menu"> Minha Área </a></li>
+			<li><a href="/arealogado/escolhaCartao" class="titulo"><strong> Cartões </strong> </a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/arealogado/cartao/credito/" class="link_menu"> Voltar </a></li>
 		</ul>
 	</header>
 
@@ -36,24 +35,24 @@
 
 	<div class="">
 		<section class="row m-auto text-center pt-2">
-			<h2> Faça sua compra </h2>
+			<h2 class="pt-4"> Faça sua compra </h2>
 			<form action="comprar" method="POST" class="col-12 m-auto">
-				<label for="nomeItem" class="d-block"> Nome Item: </label>
-				<input type="text" id="descricao" class="mb-3 p-1" name="descricao" placeholder="Informe o nome do item que deseja comprar">
+				<label for="nomeItem" class="d-block pb-1 editar"> Nome Item: </label>
+				<input type="text" id="descricao" class="mb-3 p-2 w-25 editarInput" name="descricao" placeholder="Informe o nome do item que deseja comprar">
 				
-				<label for="valorItem" class="d-block"> Valor Item: </label>
-				<input type="number" id="valor" class="mb-3 p-1" name="valor" placeholder="Informe o valor do item que deseja comprar">
+				<label for="valorItem" class="d-block pb-1 editar"> Valor Item: </label>
+				<input type="number" id="valor" class="mb-3 p-2 w-25 editarInput" name="valor" placeholder="Informe o valor do item que deseja comprar">
 				
-				<label for="senhaDebito" class="d-block"> Digitar Senha: </label>
-				<input type="password" id="senha" class="mb-3 p-1" placeholder="digite a senha de 4 dígitos" maxlength="4" name="senha">
+				<label for="senhaDebito" class="d-block pb-1 editar"> Digitar Senha: </label>
+				<input type="password" id="senha" class="mb-3 p-2 w-25 editarInput" placeholder="digite a senha de 4 dígitos" maxlength="4" name="senha">
 
 				<div class="div-cartoes"></div>
-				<button type="submit" class="btn btn-success">Fazer compra</button>
+				<button type="submit" class="m-auto w-25 botaoGeral">Fazer compra</button>
 			</form>
 		</section>
 	</div>
 
-	<footer style="position: absolute; bottom: 0; width: 100%;">
+	<footer style="position: relative; margin-top: 150px;">
 		<div>
 			<h2>Endereço</h2>
 			<p>
@@ -67,7 +66,7 @@
 			<p>@banconext</p>
 			<p>next_next</p>
 			<p>
-				<a href="https://next.me/" target="_blank">https://next.me/</a>
+				<a href="https://next.me/" class="link_next" target="_blank">https://next.me/</a>
 			</p>
 		</div>
 		<div>

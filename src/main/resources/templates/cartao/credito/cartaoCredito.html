@@ -21,15 +21,12 @@
 
 <body>
 	<header>
-		<h1 class="text-white">
-			 Banco Next 
-		</h1>
+		<h1 class="titulo"> Banco Next </h1>
 		<ul>
-			<li><a href="/menu/arealogado"> Minha Área
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"><strong> Cartões </strong></a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
-			<li><a href="/"> Sair </a></li>
+			<li><a href="/menu/arealogado" class="link_menu"> Minha Área </a></li>
+			<li><a href="/arealogado/escolhaCartao" class="titulo"><strong> Cartões </strong></a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/" class="link_menu"> Sair </a></li>
 		</ul>
 	</header>
 	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}" th:if="${erro}" ></div>
@@ -48,16 +45,14 @@
 		</div>
 	<div class="container">
 		<section class="cartoes">
-			<h2>Cartão Crédito</h2>
+			<h2 class="text-center">Cartão Crédito</h2>
 			<div class="credito">
-				<a href="criar" class="btn-ativo" th:if="${ncadastrado}"
-					th:text="${ncadastrado}"> Solicitar Cartão </a> <a href="deletar"
-					class="btn-excluir" th:if="${cadastrado}"> Excluir </a> <a
-					href="ativar" class="btn-ativo" th:text="${ativado}"
-					th:if="${ativado}"> </a> <a href="comprar" class="btn-comprar"
-					th:if="${desbloqueado}"> Comprar </a> <a href="consultar"
-					class="btn-consultar" th:if="${ativado}"> Consultar </a> <a
-					href="seguro" class="btn-seguros" th:if="${ativado}"> Seguros </a>
+				<a href="criar" class="m-auto botaoMenuCartao" th:if="${ncadastrado}" th:text="${ncadastrado}"> Solicitar Cartão </a>
+				<a href="deletar" class="botaoMenuCartao" th:if="${cadastrado}"> Excluir </a>
+				<a href="ativar" class="botaoMenuCartao" th:text="${ativado}" th:if="${ativado}"> </a>
+				<a href="comprar" class="botaoMenuCartao" th:if="${desbloqueado}"> Comprar </a>
+				<a href="consultar" class="botaoMenuCartao" th:if="${ativado}"> Consultar </a>
+				<a href="seguro" class="botaoMenuCartao" th:if="${ativado}"> Seguros </a>
 			</div>
 		</section>
 	</div>
@@ -75,7 +70,7 @@
 			<p>@banconext</p>
 			<p>next_next</p>
 			<p>
-				<a href="https://next.me/" target="_blank">https://next.me/</a>
+				<a href="https://next.me/" class="link_menu" target="_blank">https://next.me/</a>
 			</p>
 		</div>
 		<div>
@@ -86,6 +81,6 @@
 		</div>
 	</footer>
 
-	<script type="text/javascript" th:src="@{/js/scriptDebito.js}"></script>
+	<!--  <script type="text/javascript" th:src="@{/js/scriptDebito.js}"></script>-->
 </body>
 </html>

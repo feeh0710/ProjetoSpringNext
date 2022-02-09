@@ -22,17 +22,18 @@
 
 <body>
 	<header>
-		<h1 class="text-white">Banco Next</h1>
+		<h1 class="titulo">Banco Next</h1>
 		<ul>
-			<li><a href="/menu/arealogado"> <strong>Minha Área</strong>
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
-			<li><a href="/arealogado/cartao/credito/"> Voltar </a></li>
+			<li><a href="/menu/arealogado" class="link_menu"> Minha Área </a></li>
+			<li><a href="/arealogado/escolhaCartao" class="titulo"> <strong>Cartões</strong> </a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/arealogado/cartao/credito/" class="link_menu"> Voltar </a></li>
 		</ul>
 	</header>
-	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}" th:if="${erro}" ></div>
-	<div class="alert alert-success mt-2" role="alert" th:text="${ok}" th:if="${ok}" ></div>
+	
+	<div class="alert alert_danger mt-2" role="alert" th:text="${erro}" th:if="${erro}"></div>
+	<div class="alert alert_success mt-2" role="alert" th:text="${ok}" th:if="${ok}" ></div>
+	
 	<div class="cnotainer" th:object="${conta}">
 		<div class="row justify-content-between">
 			<div class = "col-12">
@@ -40,7 +41,7 @@
 					<p>
 						<strong> Fatura atual: </strong><span th:text="${conta.credito.valorFatura}"> R$ 0.0 </span>
 							<form method="POST" action="pagarfatura">
-							    <button type="submit" class="btn btn-outline-success">Pagar fatura</button>
+							    <button type="submit" class="botaoFatura">Pagar fatura</button>
 							</form> 
 					</p>
 				</div>
@@ -76,8 +77,8 @@
 		</div>
 		<div class="col-6 m-auto">
 			<h2>Compras</h2>
-			<div class="list-group" th:each="compra : ${conta.credito.compras}">
-				<a href="#" class="list-group-item list-group-item-success list-group-item-action flex-column align-items-start active">
+			<div class="list-group pt-2" th:each="compra : ${conta.credito.compras}">
+				<a href="#" class="list-group-item list-group-item-dark list-group-item-action flex-column align-items-start active">
 					<div class="d-flex w-100 justify-content-between">
 						<h5 class="mb-1" th:text="${compra.descricao}">Descrição item</h5>
 						<p>R$ <span class="mb-1" th:text="${compra.valor}">valor</span></p>
@@ -88,7 +89,7 @@
 		</div>
 	</div>
 
-	<footer>
+	<footer style="position: relative; margin-top: 50px;">
 		<div>
 			<h2>Endereço</h2>
 			<p>
@@ -102,7 +103,7 @@
 			<p>@banconext</p>
 			<p>next_next</p>
 			<p>
-				<a href="https://next.me/" target="_blank">https://next.me/</a>
+				<a href="https://next.me/" class="link_next" target="_blank">https://next.me/</a>
 			</p>
 		</div>
 		<div>

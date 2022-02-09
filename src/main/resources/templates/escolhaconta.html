@@ -16,9 +16,9 @@
 <body>
 	<div class="container">
 		<header>
-			<h1 style="color: #fff;">Banco Next</h1>
+			<h1 class="titulo">Banco Next</h1>
 			<ul>
-				<li><a href="/"> <strong>Sair</strong> </a></li>
+				<li><a href="/"> <strong class="titulo">Sair</strong> </a></li>
 			</ul>
 		</header>
 
@@ -26,7 +26,7 @@
 			<h2> Informe qual conta deseja acessar </h2>
 			<div>
 				<div class="card" th:each="conta : ${contas}">
-					<a th:href="@{/arealogado/{id}(id=${conta.id})}" th:text="${conta.tipoConta}">  </a>
+					<a class="botaoTipo" th:href="@{/arealogado/{id}(id=${conta.id})}" th:text="${conta.tipoConta}">  </a>
 				</div>
 			</div>
 		</section>
@@ -42,7 +42,7 @@
 				<h2> Mídias </h2>
 				<p> @banconext </p>
 				<p> next_next </p>
-				<p><a href="https://next.me/" target="_blank">https://next.me/</a></p>
+				<p><a href="https://next.me/" class="link_next" target="_blank">https://next.me/</a></p>
 			</div>
 			<div>
 				<h2> Contato </h2>

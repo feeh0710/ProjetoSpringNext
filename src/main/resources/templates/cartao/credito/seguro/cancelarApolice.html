@@ -21,15 +21,12 @@
 
 <body>
 	<header>
-		<h1>
-			<a class="text-white"> Banco Next </a>
-		</h1>
+		<h1> <a class="titulo"> Banco Next </a> </h1>
 		<ul>
-			<li><a href="/menu/arealogado"> <strong>Minha Área</strong>
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
-			<li><a href="/"> Voltar </a></li>
+			<li><a href="/menu/arealogado" class="link_menu"> Minha Área</a></li>
+			<li><a href="/arealogado/escolhaCartao" class="titulo"> <strong>Cartões</strong> </a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/" class="link_menu"> Voltar </a></li>
 		</ul>
 	</header>
 
@@ -38,7 +35,7 @@
 			<section class="seguroMorte">
 				<fieldset>					
 						<form action="cancelar" method="POST" class="p-5" style="border: 1px solid #000">
-							<legend>  -- DETALHES DA APÓLICE -- </legend>
+							<legend class="titulo_apolice">  -- DETALHES DA APÓLICE -- </legend>
 							<p>
 								<strong> -Data da Contratação: </strong><span th:text="${conta.credito.apolice.dataAssinatura}"> Nome </span>
 							</p>
@@ -58,7 +55,7 @@
 								<strong> -Taxa anual da Apolice: </strong><span th:text="${conta.credito.apolice.seguro.taxa}"> Nome </span>
 							</p>
 							<div class="d-grid gap-2">
-							  <button class="btn btn-danger p-2" >Cancelar Apolice</button>
+							  <button class="botaoGeral m-auto p-2" >Cancelar Apolice</button>
 							</div>
 						</form>
 					
@@ -83,7 +80,7 @@
 			<p>@banconext</p>
 			<p>next_next</p>
 			<p>
-				<a href="https://next.me/" target="_blank">https://next.me/</a>
+				<a href="https://next.me/" class="link_next" target="_blank">https://next.me/</a>
 			</p>
 		</div>
 		<div>

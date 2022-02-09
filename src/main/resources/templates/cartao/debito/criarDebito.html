@@ -21,15 +21,12 @@
 
 <body>
 	<header>
-		<h1 class="text-white">
-			Banco Next 
-		</h1>
+		<h1 class="titulo"> Banco Next </h1>
 		<ul>
-			<li><a href="areaLogado"> Minha Área
-			</a></li>
-			<li><a href="escolhaCartao"> <strong> Cartões </strong> </a></li>
-			<li><a href="menu/areapix"> Área PIX </a></li>
-			<li><a href="/arealogado/cartao/debito/"> Voltar </a></li>
+			<li><a href="/menu/arealogado" class="link_menu"> Minha Área</a></li>
+			<li><a href="/arealogado/escolhaCartao" class="titulo"><strong> Cartões </strong> </a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/arealogado/cartao/debito/" class="link_menu"> Voltar </a></li>
 		</ul>
 	</header>
 	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}"
@@ -41,21 +38,21 @@
 		<div>
 			<div>
 				<form action="criar" method="POST" class="m-auto text-center pt-5">
-				<p> Informe a bandeira </p>
-				<select name="bandeira" class="text-center m-auto">
+				<p class="editar"> Informe a bandeira </p>
+				<select name="bandeira" class="m-auto w-25 p-2 editarInput">
 					<option disabled>Selecione...</option>
 					<option th:value="master">Master</option>
 					<option th:value="visa">Visa</option>
 					<option th:value="elo">Elo</option>
 				</select>
 				
-				<label for="limiteDiario" class="mt-3 d-block"> Limite Diário: </label>
-				<input type="text" id="limitePorTransacao" class="p-1" placeholder="Informe o limite diário de transação" name="limitePorTransacao">
+				<label for="limiteDiario" class="mt-3 d-block editar"> Limite Diário: </label>
+				<input type="text" id="limitePorTransacao" class="p-2 w-25 editarInput" placeholder="Informe o limite diário de transação" name="limitePorTransacao">
 				
-				<label for="senhaDebito" class="mt-3 d-block"> Senha: </label>
-				<input type="password" id="senha" class="p-1" placeholder="Crie uma senha de 4 dígitos" maxlength="4" name="senha">
+				<label for="senhaDebito" class="mt-3 d-block editar"> Senha: </label>
+				<input type="password" id="senha" class="p-2 w-25 editarInput" placeholder="Crie uma senha de 4 dígitos" maxlength="4" name="senha">
 
-				<button type="submit" class="btn btn-success mt-3 m-auto d-block btn-criar">Criar Cartão</button>
+				<button type="submit" class="btn btn-success mt-3 w-25 m-auto d-block botaoGeral">Criar Cartão</button>
 			</form>
 			</div>
 		</div>
@@ -75,7 +72,7 @@
 			<p>@banconext</p>
 			<p>next_next</p>
 			<p>
-				<a href="https://next.me/" target="_blank">https://next.me/</a>
+				<a href="https://next.me/" class="link_next" target="_blank">https://next.me/</a>
 			</p>
 		</div>
 		<div>

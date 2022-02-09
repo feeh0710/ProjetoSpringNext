@@ -21,29 +21,28 @@
 
 <body>
 	<header>
-		<h1 class="text-white font-weight-bold">Banco Next</h1>
+		<h1 class="titulo">Banco Next</h1>
 		<ul>
-			<li><a href="/menu/arealogado">Minha Área
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"> <strong> Cartões </strong></a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
-			<li><a href="/menu/seguros"> Voltar </a></li>
+			<li><a href="/menu/arealogado" class="link_menu">Minha Área</a></li>
+			<li><a href="/arealogado/escolhaCartao" class="titulo"> <strong> Cartões </strong></a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/menu/seguros" class="link_menu"> Voltar </a></li>
 		</ul>
 	</header>
 
 	<div class="">
 		<div class=row>
-			<form action="simular" method="POST" class="col-2 py-4 m-auto">
-				<h5 class="mt-4 mb-3">Tipo de seguro</h5>
-				<select name="tipo">
+			<form action="simular" method="POST" class="py-4 text-center">
+				<h5 class="mt-4 mb-3 text-center editar">Tipo de seguro</h5>
+				<select name="tipo" class="m-auto mb-2 w-25 p-2 editarInput">
 					<option disabled>Selecione...</option>
 					<option th:value="0">Seguro Morte</option>
 					<option th:value="1">Seguro Desemprego</option>
 					<option th:value="2">Seguro Invalidez</option>
 				</select> 
-				<label for="tempoSeguroM" class="d-block mt-3"><strong>Tempo Seguro:</strong></label>
-				<input type="number" id="tempoSeguroM" class="mb-2 mt-1 w-100 p-1" name="tempo" placeholder="Informe o tempo de contratação">		
-				<button type="submit" class="btn btn-success w-100 mt-2 d-block"> Simular Apolice </button>
+				<label for="tempoSeguroM" class="d-block mt-3 text-center editar"><strong>Tempo Seguro:</strong></label>
+				<input type="number" id="tempoSeguroM" class="w-25 p-2 editarInput" name="tempo" placeholder="Informe o tempo de contratação">		
+				<button type="submit" class="w-25 m-auto mt-3 d-block botaoGeral"> Simular Apolice </button>
 			</form>
 		</div>
 	</div>
@@ -62,7 +61,7 @@
 			<p>@banconext</p>
 			<p>next_next</p>
 			<p>
-				<a href="https://next.me/" target="_blank">https://next.me/</a>
+				<a href="https://next.me/" class="link_next" target="_blank">https://next.me/</a>
 			</p>
 		</div>
 		<div>

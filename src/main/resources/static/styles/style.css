@@ -6,6 +6,8 @@
 
 body {
   font-family: "Quicksand";
+  background: #00FF5F; /**/
+  overflow-x: hidden; /**/
 }
 
 a {
@@ -14,7 +16,7 @@ a {
 
 .container {
 	display: grid;
-	grid-template-columns: repeat(8, 1fr);   
+	grid-template-columns: repeat(8, 1fr);
 }
 
 header {
@@ -22,7 +24,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background: #208454;
+	background: #000; /*#208454*/
 	padding: 30px;
 }
 
@@ -74,6 +76,7 @@ fieldset legend {
 	padding: 10px;
 	width: 300px;
 	margin: 5px 0px 20px 0px;
+	border: none;
 }
 
 select {
@@ -91,20 +94,59 @@ select {
 	font-family: "Quicksand";
 }
 
-.btn-logar, .btn-avancar, .btn-finalizar, .btn-voltar {
+.btn-logar,
+.btn-avancar,
+.btn-finalizar,
+.btn-voltar,
+.botao-cad,
+.botaoFuncao,
+.botaoCriarCartao,
+.botaoCompra,
+.botaoFatura,
+.botaoPix {
 	font-family: "Quicksand";
 	font-size: 1.15rem;
 	font-weight: bold;
 	letter-spacing: 1.5px;
 	text-align: center;
-	background: #208454;
+	background: #000; /*#208454*/
 	color: #fff;
-	border: 1px solid #fff;
+	border: none;
 	padding: 10px;
 	width: 300px;
 	display: block;
 	transition: all 0.3s;
 	cursor: pointer;
+}
+
+.botaoFatura {
+	width: 150px;
+	font-size: 1rem;
+	border-radius: 5px;
+	background: transparent;
+	color: #000;
+	border: 1px solid #000;
+}
+
+.botaoFatura:hover {
+	background: #000;
+	color: #00FF5F;
+}
+
+.btn-logar {
+	color: #00FF5F; /**/
+}
+
+#btn-log, #btn-add, .titulo, .link_menu {
+	color: #00FF5F; /**/
+}
+
+.titulo_apolice { /**/
+	font-weight: bold;
+}
+
+.label, .titulo {
+	font-weight: bold;
 }
 
 .formEnd div {
@@ -124,8 +166,15 @@ select {
 	background: rgb(245, 107, 83);
 }
 
-.btn-logar:hover, .btn-avancar:hover, .btn-finalizar:hover {
-	background: #208454;
+.btn-logar:hover,
+.btn-avancar:hover,
+.btn-finalizar:hover,
+.botao-cad:hover,
+.botaoFuncao:hover,
+.botaoCriarCartao:hover,
+.botaoCompra:hover,
+.botaoPix:hover {
+	background: #222; /*#208454*/
 }
 
 /* --------------------------- */
@@ -151,7 +200,10 @@ select {
 	margin: 0 auto;
 }
 
-.funcoes a, .pix a, .seguros a, .contas a {
+.funcoes a,
+.contas a,
+.botaoCartao,
+.botaoMenuCartao {
 	font-size: 2rem;
 	background: transparent;
 	color: #000;
@@ -162,10 +214,20 @@ select {
 	cursor: pointer;
 }
 
-.funcoes a:hover, .cartoes a:hover, .pix a:hover, .seguros a:hover, .contas a:hover {
-	background: #208454;
-	color: #fff;
-	border: 2px solid #fff;
+
+.contas a, .funcao_a { /**/
+	background: transparent;
+	transition: all 0.3s;
+}
+
+.funcao_a:hover, .botaoCartao:hover, .botaoMenuCartao:hover { /**/
+	background: #000;
+	color: #00FF5F;
+}
+
+.contas a:hover { /**/
+	background: #000;
+	transform: scale(1.1);
 }
 
 /* --------------------------- */
@@ -183,11 +245,6 @@ select {
 
 .cartoes h2 {
 	padding: 20px 0px 15px 0px;
-}
-
-.cartoes .credito {
-	/*overflow-x: scroll;*/
-	width: 1100px;
 }
 
 .cartoes .credito a {
@@ -283,11 +340,15 @@ footer {
 	justify-content: space-between;
 	align-items: center;
 	font-size: 1.15rem;
-	background: #208454;
-	color: #fff;
+	background: #000; /*#208454*/
+	color: #00FF5F; /*#fff*/
 	position: relative;
 	padding: 30px;
 	margin-top: 50px;
+}
+
+.link_next {
+	color: #00FF5F; /**/
 }
 
 footer h2 {
@@ -319,4 +380,60 @@ a:hover {
 .div-botoes {
 	display: flex;
 	justify-content: center;
+}
+
+/* DAQUI PRA BAIXO */
+
+.editar {
+	font-size: 1.15rem;
+	font-weight: bold;
+}
+
+.editarInput {
+	background: #000;
+	color: #00FF5F;
+	outline: 0;
+	border: 1px solid #000;
+}
+
+.editarInput::placeholder {
+	color: #00FF5F;
+}
+
+.botaoGeral {
+	font-family: "Quicksand";
+	font-size: 1.15rem;
+	font-weight: bold;
+	letter-spacing: 1.5px;
+	text-align: center;
+	background: transparent;
+	color: #000;
+	border: 1px solid #000;
+	padding: 10px;
+	width: 300px;
+	display: block;
+	transition: all 0.3s;
+	cursor: pointer;
+}
+
+.botaoGeral:hover {
+	background: #000;
+	color: #00FF5F;
+}
+
+.caixa_pix {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.caixa_pix div {
+	border: 2px solid rgba(0,0,0,0.5);
+	padding: 10px;
+	text-align: center;
+	border-radius: 10px;
+	margin-right: 15px;
+}
+
+.botaoTipo:hover {
+	color: #00FF5F;
 }

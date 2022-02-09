@@ -21,15 +21,12 @@
 
 <body>
 	<header>
-		<h1 class="text-white">
-			 Banco Next 
-		</h1>
+		<h1 class="titulo"> Banco Next </h1>
 		<ul>
-			<li><a href="/menu/arealogado"> Minha Área
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"> <strong> Cartões </strong></a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
-			<li><a href="/"> Sair </a></li>
+			<li><a href="/menu/arealogado" class="link_menu"> Minha Área</a></li>
+			<li><a href="/arealogado/escolhaCartao" class="titulo"> <strong> Cartões </strong></a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/" class="link_menu"> Sair </a></li>
 		</ul>
 	</header>
 	<div class="container" th:object="${conta}">
@@ -42,13 +39,11 @@
 		<section class="cartoes">
 			<h2>Cartão Débito</h2>
 			<div class="debito">
-				<a href="criar" class="btn" th:if="${ncadastrado}"
-					th:text="${ncadastrado}"> Solicitar Cartão </a> <a href="deletar"
-					class="btn-excluir" th:if="${cadastrado}"> Excluír </a> <a
-					href="ativar" class="btn-ativo" th:text="${ativado}"
-					th:if="${ativado}"> </a> <a href="comprar" class="btn-comprar"
-					th:if="${desbloqueado}"> Comprar </a> <a href="consultar"
-					class="btn-consultar" th:if="${ativado}"> Consultar </a>
+				<a href="criar" class="btn botaoMenuCartao" th:if="${ncadastrado}" th:text="${ncadastrado}"> Solicitar Cartão </a>
+				<a href="deletar" class="btn botaoMenuCartao" th:if="${cadastrado}"> Excluír </a>
+				<a href="ativar" class="btn botaoMenuCartao" th:text="${ativado}" th:if="${ativado}"> </a>
+				<a href="comprar" class="btn botaoMenuCartao" th:if="${desbloqueado}"> Comprar </a>
+				<a href="consultar" class="btn botaoMenuCartao" th:if="${ativado}"> Consultar </a>
 			</div>
 		</section>
 	</div>
@@ -67,7 +62,7 @@
 			<p>@banconext</p>
 			<p>next_next</p>
 			<p>
-				<a href="https://next.me/" target="_blank">https://next.me/</a>
+				<a href="https://next.me/" class="link_next" target="_blank">https://next.me/</a>
 			</p>
 		</div>
 		<div>

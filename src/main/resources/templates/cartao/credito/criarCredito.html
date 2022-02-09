@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banco Next | Depósito</title>
+<title>Banco Next | Crédito</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -21,15 +21,12 @@
 
 <body>
 	<header>
-		<h1 class="text-white">
-			Banco Next 
-		</h1>
+		<h1 class="titulo"> Banco Next </h1>
 		<ul>
-			<li><a href="/menu/arealogado"> Minha Área
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"><strong> Cartões </strong> </a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
-			<li><a href="/arealogado/cartao/debito/"> Voltar </a></li>
+			<li><a href="/menu/arealogado" class="link_menu"> Minha Área</a></li>
+			<li><a href="/arealogado/escolhaCartao" class="titulo"><strong> Cartões </strong> </a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/arealogado/cartao/debito/" class="link_menu"> Voltar </a></li>
 		</ul>
 	</header>
 
@@ -39,17 +36,17 @@
 	<div class="" th:object="${conta}">
 		<section class="deposito">
 			<form action="criar" method="POST" class="text-center pt-5">
-				<p class="text-center"> Informa a bandeira </p>
-				<select name="bandeira" class="m-auto text-center mb-2">
+				<p class="text-center editar"> Informa a bandeira </p>
+				<select name="bandeira" class="m-auto mb-2 w-25 p-2 editarInput">
 					<option disabled>Selecione...</option>
 					<option th:value="master">Master</option>
 					<option th:value="visa">Visa</option>
 					<option th:value="elo">Elo</option>
 				</select>
 
-				<label for="senhaDebito" class="d-block"> Senha: </label>
-				<input type="password" id="senha" name="senha" class="p-1" placeholder="Crie uma senha de 4 dígitos" maxlength="4">
-				<button type="submit" class="btn btn-success d-block mt-3 m-auto text-center botaoFuncao">Criar Cartão</button>
+				<label for="senhaDebito" class="d-block editar"> Senha: </label>
+				<input type="password" id="senha" name="senha" class="w-25 p-2 editarInput" placeholder="Crie uma senha de 4 dígitos" maxlength="4">
+				<button type="submit" class="d-block mt-3 m-auto text-center w-25 botaoGeral">Criar Cartão</button>
 			</form>
 		</section>
 	</div>
