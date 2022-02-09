@@ -44,9 +44,7 @@ public class CartaoDebitoController {
 		if (!result.hasErrors()) {
 			Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
 			System.err.println("ENTROU NO CADASTRA");
-			debito.setAtivo(true);
-			debito.setNumero(Utils.geraBlocosNumeros(4));
-			conta.setDebito(debito);
+			conta = cartaoDebitoService.criar(debito, conta);
 			contaService.createConta(conta);
 			modelAndView.setViewName("cartao/debito/cartaoDebito");
 			modelAndView.addObject("ok", "Cartao de débito criado com sucesso!");
@@ -58,6 +56,8 @@ public class CartaoDebitoController {
 			return modelAndView;
 		}
 	}
+
+	
 	@GetMapping("criar")
     public ModelAndView chamaCriar( ModelAndView modelAndView,CartaoDebito debito) {
 		System.err.println("entrou criar");
@@ -125,22 +125,28 @@ public class CartaoDebitoController {
 			if(conta.getDebito().getSenha().equals(senha)) {
 				if(conta.getDebito().getLimitePorTransacao() >= compra.getValor()) {
 					if(conta.getSaldo() >= compra.getValor()) {
-						conta.setSaldo(conta.getSaldo() - compra.getValor());
-						compra.setDataCompra(Utils.dataAtual());
-						compra.setCartao(conta.getDebito());
-						conta.getDebito().getCompras().add(compra);
-						contaService.createConta(conta);
-						modelAndView.setViewName("cartao/debito/comprarDebito");
-						modelAndView.addObject("ok", "Compra efetuada com sucesso!");
-						return modelAndView;
+						if(compra.getValor() > 0) {
+							conta.setSaldo(conta.getSaldo() - compra.getValor());
+							compra.setDataCompra(Utils.dataAtual());
+							compra.setCartao(conta.getDebito());
+							conta.getDebito().getCompras().add(compra);
+							contaService.createConta(conta);
+							modelAndView.setViewName("cartao/debito/comprarDebito");
+							modelAndView.addObject("ok", "Compra efetuada com sucesso!");
+							return modelAndView;
+						}else {
+							modelAndView.setViewName("cartao/debito/comprarDebito");
+							modelAndView.addObject("erro", "Compra negada!");
+							return modelAndView;
+						}
 					}else {
 						modelAndView.setViewName("cartao/debito/comprarDebito");
-						modelAndView.addObject("erro", "Voce não possui saldo!");
+						modelAndView.addObject("erro", "Saldo insuficiente!");
 						return modelAndView;
 					}
 				}else {
 					modelAndView.setViewName("cartao/debito/comprarDebito");
-					modelAndView.addObject("erro", "O limite é menor que o valor da compra!");
+					modelAndView.addObject("erro", "O limite é inferior ao valor da compra!");
 					return modelAndView;
 				}
 				//realizar compra
@@ -152,11 +158,13 @@ public class CartaoDebitoController {
 			}
 			
 		} else {
-			modelAndView.addObject("erro", "Houve um erro ao efetuar compra!");
+			modelAndView.addObject("erro", "erro desconhecido!");
 			modelAndView.setViewName("cartao/debito/comprarDebito");
 			return modelAndView;
 		}
 	}
+
+
 	
 	
 	@GetMapping("consultar")
