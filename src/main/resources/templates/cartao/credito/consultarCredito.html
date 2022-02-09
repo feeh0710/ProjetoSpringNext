@@ -39,7 +39,7 @@
 			<div class = "col-12">
 				<div class="col-6 m-auto pt-4">
 					<p>
-						<strong> Fatura atual: </strong><span th:text="${conta.credito.valorFatura}"> R$ 0.0 </span>
+						<strong> Fatura atual: </strong><span th:text="${conta.credito.valorFatura}" class="valor"> 0.0 </span>
 							<form method="POST" action="pagarfatura">
 							    <button type="submit" class="botaoFatura">Pagar fatura</button>
 							</form> 
@@ -48,13 +48,13 @@
 				<div class="col-6 m-auto">
 					<p>
 						<strong> Limite disponivel: </strong><span th:text="${conta.credito.limite}"
-							th:if="${conta.credito.limite}"> </span>
+							th:if="${conta.credito.limite}" class="valor"> </span>
 					</p>
 				</div>
 				<div class="col-6 m-auto">
 					<p>
 						<strong> Saldo disponivel: </strong><span th:text="${conta.saldo}"
-							th:if="${conta.saldo}"> R$ 0.0 </span>
+							th:if="${conta.saldo}" class="valor"> 0.0 </span>
 					</p>
 				</div>
 				<div class="col-6 m-auto">
@@ -81,7 +81,7 @@
 				<a href="#" class="list-group-item list-group-item-dark list-group-item-action flex-column align-items-start active">
 					<div class="d-flex w-100 justify-content-between">
 						<h5 class="mb-1" th:text="${compra.descricao}">Descrição item</h5>
-						<p>R$ <span class="mb-1" th:text="${compra.valor}">valor</span></p>
+						<p><span class="mb-1 valor" th:text="${compra.valor}">valor</span></p>
 						<small th:text="${compra.dataCompra}">data Compra</small>
 					</div>
 				</a>
@@ -115,5 +115,13 @@
 	</footer>
 
 	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+	<script>
+		const valor = document.querySelectorAll(".valor");
+		const arrayValores = Array.from(valor);
+		
+		arrayValores.forEach((item) => {
+			item.innerHTML = new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL', }).format(item.innerHTML);
+		});
+	</script>
 </body>
 </html>

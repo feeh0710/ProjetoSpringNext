@@ -37,7 +37,7 @@
 				<form action="saca" method="POST" class="text-center">
 					<legend> Saque </legend>
 					<p class="saldo">
-						<strong> Saldo: </strong><span th:text="${conta.saldo}"> R$ 0.0 </span>
+						<strong> Saldo: </strong><span th:text="${conta.saldo}" id="saldo"> 0.0 </span>
 					</p>
 					<label for="valorSaque" class="d-block mb-2 editar"> Valor Saque: </label>
 					<input type="number" name="valor" class="p-2 w-25 editarInput" placeholder="Informe o valor do saque">
@@ -73,5 +73,9 @@
 	</footer>
 
 	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+	<script>
+		const saldo = document.querySelector("#saldo");
+		saldo.innerHTML = new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL', }).format(saldo.innerHTML);
+	</script>
 </body>
 </html>

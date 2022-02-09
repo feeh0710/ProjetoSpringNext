@@ -20,7 +20,7 @@
 </head>
 
 <body>
-	<header>
+	<header class="mb-3">
 		<h1 class="titulo">Banco Next</h1>
 		<ul>
 			<li><a href="/menu/arealogado" class="link_menu"> Minha Área </a></li>
@@ -31,8 +31,7 @@
 	</header>
 	<div class="alert alert-danger mt-2" role="alert" th:text="${erro}" th:if="${erro}" ></div>
 	<div class="alert alert-success mt-2" role="alert" th:text="${ok}" th:if="${ok}" ></div>
-	<div class="text-success mt-2"  th:if="${carencia}" th:text="${carencia}">
-	</div>
+	<strong class="text-dark font-weight-bold p-4"  th:if="${carencia}" th:text="${carencia}"></strong>
 	<div class="container">
 		<section class="seguros">
 			<h2>Seguros</h2>

@@ -59,7 +59,7 @@
 						</p>
 
 						<p class="col-7 m-auto">
-							<strong> -Taxa da Apolice: </strong><span th:text="${conta.credito.apolice.seguro.taxa}"> Nome </span>
+							<strong> -Taxa da Apolice: </strong><span th:text="${conta.credito.apolice.seguro.taxa}" class="valor"> Nome </span>
 						</p>
 						
 						<legend class="col-12 m-auto py-2 text-center titulo_apolice">  -------------  REGRAS  ---------------- </legend>
@@ -79,11 +79,11 @@
 						</p>
 						<legend class="col-12 m-auto py-2 text-center titulo_apolice">  -----------  ACIONAR SEGURO   ----------</legend>
 						<p class="col-7 m-auto">
-							<strong> Valor do seguro: </strong><span th:text="${conta.credito.apolice.seguro.valor}"> Nome </span>
+							<strong> Valor do seguro: </strong><span th:text="${conta.credito.apolice.seguro.valor}" class="valor"> Nome </span>
 						</p>
 						
 						<p class="col-7 m-auto">
-							<strong> Taxa anual do seguro: </strong><span th:text="${conta.credito.apolice.seguro.taxa}"> Nome </span>
+							<strong> Taxa anual do seguro: </strong><span th:text="${conta.credito.apolice.seguro.taxa}" class="valor"> Nome </span>
 						</p>
 						<p class="col-7 m-auto">
 							<strong> Vigencia da solicitação apartir de </strong><span th:text="${conta.credito.apolice.dataCarencia}"> Nome </span>
@@ -91,10 +91,8 @@
 						
 						<p class="col-7 m-auto">
 							<strong> Valor que será debitado no ato da contratação com base em  </strong><span th:text="${conta.credito.apolice.anos}"> Nome </span>  anos de contrato:
+							<strong th:text="${valortotal}" class="valor"></strong>
 						</p >
-						<p class="col-7 m-auto">
-							<strong th:text="${valortotal}"></strong>
-						</p>
 						<p class="col-12 m-auto text-center">
 							<strong>Cesário Lange 30 de Fevereiro de 1850 Empresa Fulano de tal LTDA</strong>
 						</p>
@@ -129,4 +127,12 @@
 			</div>
 		</footer>
 		<!--<script type="text/javascript" th:src="@{/js/dashboard.js}"></script>-->
+		<script>
+			const valor = document.querySelectorAll(".valor");
+			const arrayValores = Array.from(valor);
+			
+			arrayValores.forEach((item) => {
+				item.innerHTML = new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL', }).format(item.innerHTML);
+			});
+		</script>
 </html>

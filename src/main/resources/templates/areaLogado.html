@@ -27,7 +27,7 @@
 	<div class="d-flex justify-content-between"> <!-- row -->
 			<div class="px-5 py-3"> <!-- col-6 -->
 				<p class="h3">
-					<strong> Saldo: </strong><span th:text="${conta.saldo}" id="saldo"> R$ 0.0 </span>
+					<strong> Saldo: </strong><span th:text="${conta.saldo}" id="saldo"> 0.0 </span>
 				</p>
 			</div>
 			<div class="px-5 py-3"> <!-- col-6 -->
@@ -49,6 +49,7 @@
 			</div>
 		</section>
 	</div>
+	
 	<footer>
 		<div>
 			<h2>Endereço</h2>
@@ -74,6 +75,11 @@
 		</div>
 	</footer>
 
-	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+	<!--script type="text/javascript" th:src="@{/js/script.js}"></script> -->
+	<script>		
+		const saldo = document.querySelector("#saldo");
+		
+		saldo.innerHTML = new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL', }).format(saldo.innerHTML);
+	</script>
 </body>
 </html>
