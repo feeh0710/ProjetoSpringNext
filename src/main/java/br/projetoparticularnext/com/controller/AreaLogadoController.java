@@ -86,12 +86,16 @@ public class AreaLogadoController {
 	public String sacar(Model model,int valor, RedirectAttributes redirAttrs) {
 		System.err.println("SACANDO: "+valor);
 		Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
-		if(conta.getSaldo() >= valor) {
-			conta.setSaldo(conta.getSaldo()-valor);
-			conta = TipoCliente.verificaTipoConta(conta);
-			contaService.setConta(conta);
-			redirAttrs.addFlashAttribute("ok", "Saque de R$"+valor+",00 reais realizada com sucesso");
-			return "redirect:/arealogado/"+conta.getId();
+		if(conta.getSaldo() >= valor ) {
+			if(valor > 0) {
+				conta = contaService.sacar(valor, conta);
+				contaService.setConta(conta);
+				redirAttrs.addFlashAttribute("ok", "Saque de R$"+valor+",00 reais realizada com sucesso");
+				return "redirect:/arealogado/"+conta.getId();
+			}else {
+				redirAttrs.addFlashAttribute("erro", "Erro no saque!");
+				return "redirect:/arealogado/"+conta.getId();
+			}
 			
 		}else {
 			redirAttrs.addFlashAttribute("erro", "Você não possui saldo suficiente!");
@@ -102,13 +106,17 @@ public class AreaLogadoController {
    	public String depositar(Model model,int valor, RedirectAttributes redirAttrs) {
    		System.err.println("DEPOSITANDO: "+valor);
    		Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
+   		
    		if(conta != null) {
-   			conta.setSaldo(conta.getSaldo()+valor);
-   			conta = TipoCliente.verificaTipoConta(conta);
-   			contaService.setConta(conta);
-   			redirAttrs.addFlashAttribute("ok", "Depósito de R$"+valor+",00 reais realizada com sucesso");
-   			return "redirect:/arealogado/"+conta.getId();
-   			
+   			if(valor > 0) {
+   				conta = contaService.depositar(valor, conta);
+   	   			contaService.setConta(conta);
+   	   			redirAttrs.addFlashAttribute("ok", "Depósito de R$"+valor+",00 reais realizada com sucesso");
+   	   			return "redirect:/arealogado/"+conta.getId();
+   			}else {
+   				redirAttrs.addFlashAttribute("erro", "Erro no deposito!");
+   				return "redirect:/arealogado/"+conta.getId();
+   			}   			
    		}else {
    			redirAttrs.addFlashAttribute("erro", "Erro no deposito!");
    			return "redirect:/arealogado/"+conta.getId();
@@ -128,12 +136,14 @@ public class AreaLogadoController {
 		}
    		if(conta != null && contaDestino != null) {
    			if(conta.getSaldo() >= valor) {
-   				conta.setSaldo(conta.getSaldo()-valor);
-   				contaDestino.setSaldo(contaDestino.getSaldo()+valor);
-   	   			conta = TipoCliente.verificaTipoConta(conta);
-   	   			contaService.setAll(Arrays.asList(conta,contaDestino));
-   	   			redirAttrs.addFlashAttribute("ok", "Transferencia de R$"+valor+",00 reais para "+contaDestino.getCliente().getNome()+" realizada com sucesso!");
-   	   			return "redirect:/arealogado/"+conta.getId();
+   				if(valor > 0) {
+   					conta = contaService.transferir(valor, conta, contaDestino);
+   	   	   			redirAttrs.addFlashAttribute("ok", "Transferencia de R$"+valor+",00 reais para "+contaDestino.getCliente().getNome()+" realizada com sucesso!");
+   	   	   			return "redirect:/arealogado/"+conta.getId();
+   				}else {
+   					redirAttrs.addFlashAttribute("erro", "Erro na transferencia!");
+   					return "redirect:/arealogado/"+conta.getId();
+   				} 
    			}else {
    				redirAttrs.addFlashAttribute("erro", "Você não possui saldo para esta transferencia!");
 	   			return "redirect:/arealogado/"+conta.getId();
@@ -144,6 +154,10 @@ public class AreaLogadoController {
    			return "redirect:/arealogado/"+conta.getId();
    		}
     }
+
+
+
+	
     
     
 }

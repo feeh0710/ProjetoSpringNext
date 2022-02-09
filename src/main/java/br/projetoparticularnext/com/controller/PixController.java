@@ -5,12 +5,10 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.projetoparticularnext.com.model.conta.Conta;
@@ -58,10 +56,10 @@ public class PixController {
 		Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
 		Pix pix = pixService.getPixById(id);
 		System.err.println("CONTA PIX   "+pix.getConta().getCliente().getCpf());
-		modelAndView.addObject("ok","Pix deletado com sucesso!");
 		conta.getListPix().remove(pix);
 		contaService.createConta(conta);
 		pixService.delete(pix);
+		modelAndView.addObject("ok","Pix deletado com sucesso!");
 		modelAndView.addObject("listPix", conta.getListPix());
 		modelAndView.setViewName("pix/consultaPix");
 		
@@ -89,11 +87,15 @@ public class PixController {
 		}
 		if (conta.getSaldo() >= valor ) {
 			if(contaDestino != null) {
-				contaDestino.setSaldo(contaDestino.getSaldo() + valor);
-				conta.setSaldo(conta.getSaldo() - valor);
-				contaService.createConta(contaDestino);
-				contaService.createConta(conta);
-				modelAndView.addObject("ok", "Transferencia para "+contaDestino.getCliente().getNome()+" de "+valor+",00 realizada com sucesso!");
+				if(valor > 0) {
+					pixService.transferir(valor, conta, contaDestino);
+					contaService.createConta(contaDestino);
+					contaService.createConta(conta);
+					modelAndView.addObject("ok", "Transferencia para "
+					+contaDestino.getCliente().getNome()+" de "+valor+",00 realizada com sucesso!");
+				}else {
+					modelAndView.addObject("erro", "Erro na transferencia!");
+				}
 			}else {
 				modelAndView.addObject("erro", "Pix não encontrado");
 			}
@@ -104,16 +106,28 @@ public class PixController {
 		pixService.verificaPix(modelAndView, conta,"");
 		return modelAndView;
 	}
+
+	
 	@PostMapping("cadastrar")
 	public ModelAndView cadastrar(ModelAndView modelAndView,String tipochave) {
 		Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
 		Pix pix = pixService.criaPix(tipochave,conta);
-		conta.getListPix().add(pix);
-		pix.setConta(conta);
-		contaService.createConta(conta);
-		pixService.verificaPix(modelAndView, conta,"");
-		modelAndView.addObject("ok", "Pix criado com sucesso!");
-		modelAndView.setViewName("pix/pix");
-		return modelAndView;
+		if(pixService.verificaPixExistente(conta.getListPix(),pix)) {
+			conta.getListPix().add(pix);
+			pix.setConta(conta);
+			contaService.createConta(conta);
+			pixService.verificaPix(modelAndView, conta,"");
+			modelAndView.addObject("ok", "Pix criado com sucesso!");
+			modelAndView.setViewName("pix/pix");
+			return modelAndView;
+
+		}else {
+			modelAndView.addObject("erro", "O pix já existe!");
+			modelAndView.setViewName("pix/pix");
+			pixService.verificaPix(modelAndView, conta,"");
+			return modelAndView;
+		}
 	}
+
+	
 }
