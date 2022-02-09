@@ -1,7 +1,5 @@
 package br.projetoparticularnext.com.controller;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +12,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.projetoparticularnext.com.dto.ClienteEndereco;
 import br.projetoparticularnext.com.model.Endereco;
 import br.projetoparticularnext.com.model.cliente.Cliente;
-import br.projetoparticularnext.com.model.conta.Conta;
-import br.projetoparticularnext.com.model.conta.TipoConta;
 import br.projetoparticularnext.com.service.ClienteService;
 import br.projetoparticularnext.com.utils.Const;
-import br.projetoparticularnext.com.utils.ValidaCPF;
 
 @Controller
 @RequestMapping("/")
@@ -55,29 +50,35 @@ public class IndexController {
 		Endereco endereco = new Endereco(cliend.getCidade(), cliend.getEstado(), cliend.getBairro(), cliend.getNumero(), cliend.getLogradouro(), cliend.getCep());
 		Cliente cliente = new Cliente(cliend.getSenha(), cliend.getEmail(), cliend.getCpf(), cliend.getRg(), cliend.getNome(),cliend.getTelefone(), endereco);
 		
-		if(cliend.getTipo().equals("3")) {
-			Conta conta1 = new Conta(cliente,TipoConta.CONTACORRENTE);
-			Conta conta2 = new Conta(cliente,TipoConta.CONTAPOUPANCA);
-			cliente.setListConta(Arrays.asList(conta1,conta2));
-			clienteService.createCliente(cliente);
-			Const.ID_CLIENTE_LOGADO = cliente.getId();
-			redirAttrs.addFlashAttribute("cadastro", "Usuário e conta corrente+poupança cadastradas com sucesso!\n realize login");
-			return "redirect:/";
-		}else if(cliend.getTipo().equals("2")) {
-			Conta conta2 = new Conta(cliente,TipoConta.CONTAPOUPANCA);
-			cliente.setListConta(Arrays.asList(conta2));
-			clienteService.createCliente(cliente);
-			Const.ID_CLIENTE_LOGADO = cliente.getId();
-			redirAttrs.addFlashAttribute("cadastro", "Usuário e conta poupança cadastradas com sucesso!\n realize login!");
-			return "redirect:/";
+		if(clienteService.validarCampos(cliend)) {
+			if(cliend.getTipo().equals("3")) {
+				cliente = clienteService.ciarContas(cliente);
+				clienteService.createCliente(cliente);
+				Const.ID_CLIENTE_LOGADO = cliente.getId();
+				redirAttrs.addFlashAttribute("cadastro", "Usuário e conta corrente+poupança cadastradas com sucesso!\n realize login");
+				return "redirect:/";
+			}else if(cliend.getTipo().equals("2")) {
+				clienteService.criaContaPoupanca(cliente);
+				clienteService.createCliente(cliente);
+				Const.ID_CLIENTE_LOGADO = cliente.getId();
+				redirAttrs.addFlashAttribute("cadastro", "Usuário e conta poupança cadastradas com sucesso!\n realize login!");
+				return "redirect:/";
+			}else {
+				cliente = clienteService.criaContaCorrente(cliente);
+				clienteService.createCliente(cliente);
+				Const.ID_CLIENTE_LOGADO = cliente.getId();
+				redirAttrs.addFlashAttribute("cadastro", "Usuário e conta corrente cadastradas com sucesso!\n realize login!");
+				return "redirect:/";
+			}
 		}else {
-			Conta conta1 = new Conta(cliente,TipoConta.CONTACORRENTE);
-			cliente.setListConta(Arrays.asList(conta1));
-			clienteService.createCliente(cliente);
-			Const.ID_CLIENTE_LOGADO = cliente.getId();
-			redirAttrs.addFlashAttribute("cadastro", "Usuário e conta corrente cadastradas com sucesso!\n realize login!");
+			redirAttrs.addFlashAttribute("erro", "Erro!\n Voce precisa preencher todos os campos antes de clicar em cadastrar!");
 			return "redirect:/";
 		}
 	}
+
+	
+
+	
+	
 	
 }

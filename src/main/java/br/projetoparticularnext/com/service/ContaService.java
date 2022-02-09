@@ -1,11 +1,13 @@
 package br.projetoparticularnext.com.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.projetoparticularnext.com.model.cliente.TipoCliente;
 import br.projetoparticularnext.com.model.conta.Conta;
 import br.projetoparticularnext.com.repository.ContaRepository;
 
@@ -44,6 +46,26 @@ public class ContaService {
 	
 	public Conta getContaByClienteId(int tipoConta) {
 		return contaRepository.findByNumberAccount(tipoConta);
+	}
+	
+	public Conta transferir(int valor, Conta conta, Conta contaDestino) {
+		conta.setSaldo(conta.getSaldo()-valor);
+		contaDestino.setSaldo(contaDestino.getSaldo()+valor);
+		conta = TipoCliente.verificaTipoConta(conta);
+		setAll(Arrays.asList(conta,contaDestino));
+		return conta;
+	}
+	
+	public Conta depositar(int valor, Conta conta) {
+		conta.setSaldo(conta.getSaldo()+valor);
+		conta = TipoCliente.verificaTipoConta(conta);
+		return conta;
+	}
+	
+	public Conta sacar(int valor, Conta conta) {
+		conta.setSaldo(conta.getSaldo()-valor);
+		conta = TipoCliente.verificaTipoConta(conta);
+		return conta;
 	}
 	
 	
