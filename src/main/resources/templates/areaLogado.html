@@ -16,15 +16,12 @@
 
 <body>
 	<header>
-		<h1 class="text-white">
-			 Banco Next 
-		</h1>
+		<h1 class="titulo"> Banco Next </h1>
 		<ul>
-			<li><a href=""> <strong>Minha Área</strong>
-			</a></li>
-			<li><a href="escolhaCartao"> Cartões </a></li>
-			<li><a href="pix/"> Área PIX </a></li>
-			<li><a href="/"> Sair </a></li>
+			<li><a href="" class="titulo"><strong>Minha Área</strong></a></li>
+			<li><a href="escolhaCartao" class="link_menu"> Cartões </a></li>
+			<li><a href="pix/" class="link_menu"> Área PIX </a></li>
+			<li><a href="/" class="link_menu"> Sair </a></li>
 		</ul>
 	</header>
 	<div class="d-flex justify-content-between"> <!-- row -->
@@ -46,9 +43,9 @@
 			th:if="${ok}"></div>
 		<section class="funcoes">
 			<div>
-				<a href="sacar"> Sacar </a>
-				<a href="depositar"> Deposito </a>
-				<a href="transferencia"> Transferir </a>
+				<a href="sacar" class="funcao_a"> Sacar </a>
+				<a href="depositar" class="funcao_a"> Deposito </a>
+				<a href="transferencia" class="funcao_a"> Transferir </a>
 			</div>
 		</section>
 	</div>
@@ -66,7 +63,7 @@
 			<p>@banconext</p>
 			<p>next_next</p>
 			<p>
-				<a href="https://next.me/" target="_blank">https://next.me/</a>
+				<a href="https://next.me/" class="link_next" target="_blank">https://next.me/</a>
 			</p>
 		</div>
 		<div>

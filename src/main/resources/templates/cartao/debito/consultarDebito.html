@@ -22,19 +22,18 @@
 
 <body>
 	<header>
-		<h1 class="text-white">Banco Next</h1>
+		<h1 class="titulo">Banco Next</h1>
 		<ul>
-			<li><a href="/menu/arealogado"> Minha Área
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"> <strong> Cartões </strong> </a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
-			<li><a href="/arealogado/cartao/debito/"> Voltar </a></li>
+			<li><a href="/menu/arealogado" class="link_menu"> Minha Área</a></li>
+			<li><a href="/arealogado/escolhaCartao" class="titulo"> <strong> Cartões </strong> </a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/arealogado/cartao/debito/" class="link_menu"> Voltar </a></li>
 		</ul>
 	</header>
 	
 	<div class="row">
 		<div th:object="${debito}">
-			<div class="col-5 m-auto pt-2">
+			<div class="col-5 m-auto pt-4">
 				<legend> Dados do Cartão </legend>
 				<p>
 					<strong>Número cartão:</strong><span  th:text="${debito.numero}"> 2222.3333.4444.5555 </span>
@@ -50,8 +49,8 @@
 		</div>
 		<div class="col-5 m-auto">
 			<h2>Compras</h2>
-			<div class="list-group" th:each="compra : ${compras}">
-				<a href="#" class="list-group-item list-group-item-success list-group-item-action flex-column align-items-start active">
+			<div class="list-group pt-2" th:each="compra : ${compras}">
+				<a href="#" class="list-group-item list-group-item-dark list-group-item-action flex-column align-items-start active">
 					<div class="d-flex w-100 justify-content-between">
 						<h5 class="mb-1" th:text="${compra.descricao}">Descrição item</h5>
 						<p>R$ <span class="mb-1" th:text="${compra.valor}">valor</span></p>
@@ -76,7 +75,7 @@
 			<p>@banconext</p>
 			<p>next_next</p>
 			<p>
-				<a href="https://next.me/" target="_blank">https://next.me/</a>
+				<a href="https://next.me/" class="link_next" target="_blank">https://next.me/</a>
 			</p>
 		</div>
 		<div>

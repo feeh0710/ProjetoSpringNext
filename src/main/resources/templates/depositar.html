@@ -21,14 +21,11 @@
 
 <body>
 	<header>
-		<h1  class="text-white">
-			 Banco Next 
-		</h1>
+		<h1  class="titulo"> Banco Next </h1>
 		<ul>
-			<li><a href="/menu/arealogado"> <strong>Minha Área</strong>
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
+			<li><a href="/menu/arealogado" class="titulo"><strong>Minha Área</strong></a></li>
+			<li><a href="/arealogado/escolhaCartao" class="link_menu"> Cartões </a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
 		</ul>
 	</header>
 	<div class="" th:object="${conta}">
@@ -39,9 +36,9 @@
 					<p class="saldo">
 						<strong> Saldo: </strong><span th:text="${conta.saldo}"> R$ 0.0 </span>
 					</p>
-					<label for="valorDeposito" class="d-block mb-2"> Valor Depósito: </label>
-					<input type="number" name="valor" class="p-1" placeholder="Informe o valor do saque">
-					<button class="btn btn-success d-block mt-3 m-auto botaoFuncao" type="submit">Depositar</button>
+					<label for="valorDeposito" class="d-block mb-2 editar"> Valor Depósito: </label>
+					<input type="number" name="valor" class="p-2 w-25 editarInput" placeholder="Informe o valor do saque">
+					<button class="d-block mt-3 w-25 m-auto botaoGeral" type="submit">Depositar</button>
 				</fieldset>
 			</form>
 		</section>
@@ -61,7 +58,7 @@
 			<p>@banconext</p>
 			<p>next_next</p>
 			<p>
-				<a href="https://next.me/" target="_blank">https://next.me/</a>
+				<a href="https://next.me/" class="link_next" target="_blank">https://next.me/</a>
 			</p>
 		</div>
 		<div>

@@ -21,15 +21,12 @@
 
 <body>
 	<header>
-		<h1 class="text-white">
-			 Banco Next 
-		</h1>
+		<h1 class="titulo"> Banco Next </h1>
 		<ul>
-			<li><a href="/menu/arealogado"> Minha Área
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"> <strong> Cartões </strong> </a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
-			<li><a href="/arealogado/cartao/debito/"> Voltar </a></li>
+			<li><a href="/menu/arealogado" class="link_menu"> Minha Área </a></li>
+			<li><a href="/arealogado/escolhaCartao" class="titulo"> <strong> Cartões </strong> </a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/arealogado/cartao/debito/" class="link_menu"> Voltar </a></li>
 		</ul>
 	</header>
 
@@ -49,7 +46,7 @@
 				<h6 class="pb-2">
 					<strong>Limite diário:</strong><span th:text="${debito.limitePorTransacao}"> R$ 1.000,00 </span>
 				</h6>
-				<button type="submit" class="btn btn-danger">Cancelar Cartão</button>
+				<button type="submit" class="botaoGeral m-auto p-2">Cancelar Cartão</button>
 			</form>
 		</section>
 	</div>

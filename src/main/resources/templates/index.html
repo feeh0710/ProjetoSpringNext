@@ -17,7 +17,7 @@
 
 <body>
 	<header>
-		<h1 class="text-white font-weight-bold">Banco Next</h1>
+		<h1 class="titulo">Banco Next</h1>
 		<ul>
 			<li><a href="" id="btn-log"> Login </a></li>
 			<li><a href="" id="btn-add"> Cadastrar </a></li>
@@ -30,15 +30,15 @@
 	<div class="container">
 		<section class="log">
 			<fieldset>
-				<legend> Login </legend>
+				<legend class="label"> Login </legend>
 				<form action="escolhaconta" method="POST">
-					<label for="cpfLogin"> CPF: </label> <input type="text"
-						name="cpfLogin" id="cpfLogin" placeholder="Informe o seu CPF"
-						maxlength="11" class="cpf"> <label for="senhaLogin">
-						Senha: </label> <input type="password" name="senhaLogin"
-						placeholder="Informe a sua senha" maxlength="4">
+					<label for="cpfLogin" class="label"> CPF: </label>
+					<input type="text" name="cpfLogin" id="cpfLogin" placeholder="Informe o seu CPF" maxlength="11" class="cpf editarInput">
+					
+					<label for="senhaLogin" class="label"> Senha: </label>
+					<input type="password" class="editarInput" name="senhaLogin" placeholder="Informe a sua senha" maxlength="4">
 
-					<button class="btn-logar" type="submit">Logar</button>
+					<button class="botaoGeral" type="submit">Logar</button>
 				</form>
 			</fieldset>
 		</section>
@@ -50,22 +50,25 @@
 						<fieldset>
 							<legend> Cadastrar Dados </legend>
 							<label for="nomeCadastro"> Nome: </label> <input type="text"
-								name="nome" class="input" placeholder="Informe o seu nome">
+								name="nome" class="input editarInput" placeholder="Informe o seu nome">
 
-							<label for="cpfCadastro"> CPF: </label> <input type="text"
-								name="cpf" id="cpf" class="input cpf"
-								placeholder="Informe o seu CPF" maxlength="11"> <label
-								for="rgCadastro"> Rg: </label> <input type="text" name="rg"
-								id="rg" class="input" placeholder="Informe o seu RG"
-								maxlength="11"> <label for="emailCadastro">
-								E-mail: </label> <input type="text" name="email" class="input"
-								placeholder="Informe o seu e-mail">
-								<label for="telefoneCadastro"> Telefone </label>
-								<input type="text" name="telefone" id="telefoneCadastro" class="input" placeholder="Informe o seu telefone">
-								<label for="senhaCadastro"> Senha: </label> <input type="password"
-								name="senha" class="input" placeholder="Crie uma senha"
-								maxlength="4"> <label for="tipoConta"> Tipo de
-								Conta: </label> <select class="tipoConta" name="tipo">
+							<label for="cpfCadastro"> CPF: </label>
+							<input type="text" name="cpf" id="cpf" class="input cpf editarInput" placeholder="Informe o seu CPF" maxlength="11">
+							
+							<label for="rgCadastro"> Rg: </label>
+							<input type="text" name="rg" id="rg" class="input editarInput" placeholder="Informe o seu RG" maxlength="11">
+							
+							<label for="emailCadastro"> E-mail: </label>
+							<input type="text" name="email" class="input editarInput" placeholder="Informe o seu e-mail">
+							
+							<label for="telefoneCadastro"> Telefone </label>
+							<input type="text" name="telefone" id="telefoneCadastro" class="input editarInput" placeholder="Informe o seu telefone">
+							
+							<label for="senhaCadastro"> Senha: </label>
+							<input type="password" name="senha" class="input editarInput" placeholder="Crie uma senha" maxlength="4">
+							
+							<label for="tipoConta"> Tipo de Conta: </label>
+							<select class="tipoConta editarInput" name="tipo">
 								<option disabled>Selecione...</option>
 								<option th:value="1">Corrente</option>
 								<option th:value="2">Poupança</option>
@@ -76,28 +79,29 @@
 					<div class="col-6">
 						<fieldset>
 							<legend> Cadastrar Endereço </legend>
-							<label for="logradouroCadastro"> Logradouro: </label> <input
-								type="text" name="logradouro" class="input"
-								placeholder="Informe o logradouro (Rua, Av. Trav.)"> <label
-								for="numeroCadastro"> Número: </label> <input type="number"
-								name="numero" class="input" placeholder="Informe o número">
+							<label for="logradouroCadastro"> Logradouro: </label>
+							<input type="text" name="logradouro" class="input editarInput" placeholder="Informe o logradouro (Rua, Av. Trav.)">
+							
+							<label for="numeroCadastro"> Número: </label>
+							<input type="number" name="numero" class="input editarInput" placeholder="Informe o número">
 
-							<label for="cepCadastro"> CEP: </label> <input type="text"
-								name="cep" id="cep" class="input"
-								placeholder="Informe o seu CEP" maxlength="8"> <label
-								for="bairroCadastro"> Bairro: </label> <input type="text"
-								name="bairro" class="input" placeholder="Informe o seu bairro">
+							<label for="cepCadastro"> CEP: </label>
+							<input type="text" name="cep" id="cep" class="input editarInput" placeholder="Informe o seu CEP" maxlength="8">
+							
+							<label for="bairroCadastro"> Bairro: </label>
+							<input type="text" name="bairro" class="input editarInput" placeholder="Informe o seu bairro">
 
-							<label for="cidadeCadastro"> Cidade: </label> <input type="text"
-								name="cidade" class="input" placeholder="Informe a sua cidade">
-							<label for="cidadeCadastro"> Estado: </label> <input type="text"
-								name="estado" class="input" placeholder="Informe o seu Estado">
+							<label for="cidadeCadastro"> Cidade: </label>
+							<input type="text" name="cidade" class="input editarInput" placeholder="Informe a sua cidade">
+							
+							<label for="cidadeCadastro"> Estado: </label>
+							<input type="text" name="estado" class="input editarInput" placeholder="Informe o seu Estado">
 							<div></div>
 						</fieldset>
 					</div>
 				</div>
 				<div class="row m-auto">
-					<button class="btn btn-success m-auto col-6 p-2" type="submit"> Cadastrar </button>
+					<button class="m-auto col-6 p-2 botaoGeral" type="submit"> Cadastrar </button>
 				</div>
 			</form>
 
@@ -117,7 +121,7 @@
 				<p>@banconext</p>
 				<p>next_next</p>
 				<p>
-					<a href="https://next.me/" target="_blank">https://next.me/</a>
+					<a href="https://next.me/" target="_blank" class="link_next">https://next.me/</a>
 				</p>
 			</div>
 			<div>

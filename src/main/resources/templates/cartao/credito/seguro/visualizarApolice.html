@@ -21,13 +21,12 @@
 
 <body>
 	<header>
-		<h1 class="text-white font-weight-bold">Banco Next</h1>
+		<h1 class=titulo>Banco Next</h1>
 		<ul>
-			<li><a href="/menu/arealogado">Minha Área
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"><strong> Cartões </strong></a></li>
-			<li><a href="/menu/pix"> Área PIX </a></li>
-			<li><a href="/menu/seguros"> Cancelar </a></li>
+			<li><a href="/menu/arealogado" class="link_menu">Minha Área</a></li>
+			<li><a href="/arealogado/escolhaCartao" class="titulo"><strong> Cartões </strong></a></li>
+			<li><a href="/menu/pix" class="link_menu"> Área PIX </a></li>
+			<li><a href="/menu/seguros" class="link_menu"> Cancelar </a></li>
 		</ul>
 	</header>
 
@@ -35,9 +34,9 @@
 		<section>
 			<fieldset style="border: 1px solid #000;" class="col-7 mx-auto mt-3">
 				<form action="contratar" method="POST" class="row">
-					<legend class="col-12 m-auto py-2 text-center"> --------
+					<legend class="col-12 m-auto py-2 text-center titulo_apolice"> --------
 						CONTRATO DO SEGURO -------- </legend>
-					<legend class="col-12 m-auto py-2 text-center"> -------
+					<legend class="col-12 m-auto py-2 text-center titulo_apolice"> -------
 						DADOS DO CONTRATANTE -------- </legend>
 					<p class="col-7 m-auto">
 						<strong> -Nome do Segurado: </strong><span
@@ -73,7 +72,7 @@
 							th:text="${conta.credito.apolice.seguro.taxa}"> Nome </span>
 					</p>
 
-					<legend class="col-12 m-auto py-2 text-center">
+					<legend class="col-12 m-auto py-2 text-center titulo_apolice">
 						------------- REGRAS ---------------- </legend>
 					<p class="col-7 m-auto">
 						<strong th:each="regra : ${regras}"> <strong
@@ -81,7 +80,7 @@
 						</strong>
 					</p>
 					<!--ESPACO-->
-					<legend class="col-12 m-auto py-2 text-center">
+					<legend class="col-12 m-auto py-2 text-center titulo_apolice">
 						------------- CONDIÇÃO -------------- </legend>
 					<p class="col-7 m-auto">
 						Eu <strong th:text="${conta.cliente.nome}"> </strong><span>
@@ -92,7 +91,7 @@
 						<span> "Todos os nossos seguros garantem recuperação de
 							100% do valor investido pelo segurado. </span>
 					</p>
-					<legend class="col-12 m-auto py-2 text-center">
+					<legend class="col-12 m-auto py-2 text-center titulo_apolice">
 						----------- ACIONAR SEGURO ----------</legend>
 					<p class="col-7 m-auto">
 						<strong> Valor do seguro: </strong><span
@@ -121,7 +120,7 @@
 							Fulano de tal LTDA</strong>
 					</p>
 					<a href="/arealogado/cartao/credito/seguro"
-						class="btn btn-success col-7 mx-auto mt-4 py-2 w-50">voltar</a>
+						class="ol-7 mx-auto mt-4 py-2 w-50 botaoGeral">voltar</a>
 				</form>
 			</fieldset>
 		</section>

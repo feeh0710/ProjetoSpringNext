@@ -21,13 +21,12 @@
 
 <body>
 	<header>
-		<h1 class="text-white font-weight-bold">Banco Next</h1>
+		<h1 class=titulo>Banco Next</h1>
 		<ul>
-			<li><a href="/menu/arealogado"> Minha Área
-			</a></li>
-			<li><a href="/arealogado/escolhaCartao"> Cartões </a></li>
-			<li><a href="/menu/pix"> <strong> Área PIX </strong> </a></li>
-			<li><a href="/menu/pix"> Voltar </a></li>
+			<li><a href="/menu/arealogado" class="link_menu"> Minha Área</a></li>
+			<li><a href="/arealogado/escolhaCartao" class="link_menu"> Cartões </a></li>
+			<li><a href="/menu/pix" class="titulo"> <strong> Área PIX </strong> </a></li>
+			<li><a href="/menu/pix" class="link_menu"> Voltar </a></li>
 		</ul>
 	</header>
 
@@ -35,15 +34,15 @@
 		<section class="cadastroPix">
 			<fieldset class="row">
 				<form action="cadastrar" method="POST" class="col-12 text-center m-auto">
-				<h5 class="mt-5">Selecione o tipo chave Pix</h5>
-				<select name="tipochave" class="mx-auto my-2 p-2">
+				<h5 class="mt-5 editar">Selecione o tipo chave Pix</h5>
+				<select name="tipochave" class="mx-auto my-2 p-2 w-25 editarInput">
 					<option disabled>Selecione...</option>
 					<option th:value="0">CPF</option>
 					<option th:value="1">Email</option>
 					<option th:value="2">Telefone</option>
 					<option th:value="3">Chave Aleatoria</option>
 				</select> 
-				<button type="submit" class="btn btn-success mt-4 ">Cadastrar chave pix</button>
+				<button type="submit" class="mt-4 p-2 w-25 m-auto botaoGeral">Cadastrar Chave Pix</button>
 			</form>
 			</fieldset>
 		</section>
@@ -63,7 +62,7 @@
 			<p>@banconext</p>
 			<p>next_next</p>
 			<p>
-				<a href="https://next.me/" target="_blank">https://next.me/</a>
+				<a href="https://next.me/" class="link_menu" target="_blank">https://next.me/</a>
 			</p>
 		</div>
 		<div>
