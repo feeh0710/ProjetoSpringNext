@@ -1,5 +1,7 @@
 package br.projetoparticularnext.com.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -107,7 +109,7 @@ public class CartaoDebitoController {
 	}
 	
 	@GetMapping("comprar")
-    public ModelAndView chamaComprar( ModelAndView modelAndView) {
+    public ModelAndView chamaComprar(ModelAndView modelAndView) {
 		System.err.println("entrou comprar");
     	Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
     	modelAndView.addObject("conta",conta);
@@ -116,50 +118,43 @@ public class CartaoDebitoController {
     }
 	
 	@PostMapping("comprar")
-	public ModelAndView comprar( ModelAndView modelAndView,
-			RedirectAttributes attributes, Compra compra,String senha, BindingResult result) {
+	public ModelAndView comprar(ModelAndView modelAndView,
+			RedirectAttributes attributes, Compra compra,String senha) {
 		System.err.println("COMPRAR O QUE VEIO DO FOMR: "+senha+" "+compra.getDescricao()+" "+compra.getValor());
-		if (!result.hasErrors()) {
-			Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
-			System.err.println("ENTROU NO COMPRA");
-			if(conta.getDebito().getSenha().equals(senha)) {
-				if(conta.getDebito().getLimitePorTransacao() >= compra.getValor()) {
-					if(conta.getSaldo() >= compra.getValor()) {
-						if(compra.getValor() > 0) {
-							conta.setSaldo(conta.getSaldo() - compra.getValor());
-							compra.setDataCompra(Utils.dataAtual());
-							compra.setCartao(conta.getDebito());
-							conta.getDebito().getCompras().add(compra);
-							contaService.createConta(conta);
-							modelAndView.setViewName("cartao/debito/comprarDebito");
-							modelAndView.addObject("ok", "Compra efetuada com sucesso!");
-							return modelAndView;
-						}else {
-							modelAndView.setViewName("cartao/debito/comprarDebito");
-							modelAndView.addObject("erro", "Compra negada!");
-							return modelAndView;
-						}
+		Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
+		System.err.println("ENTROU NO COMPRA");
+		if(conta.getDebito().getSenha().equals(senha)) {
+			if(conta.getDebito().getLimitePorTransacao() >= compra.getValor()) {
+				if(conta.getSaldo() >= compra.getValor()) {
+					if(compra.getValor() > 0) {
+						conta.setSaldo(conta.getSaldo() - compra.getValor());
+						compra.setDataCompra(Utils.dataAtual());
+						compra.setCartao(conta.getDebito());
+						conta.getDebito().getCompras().add(compra);
+						contaService.createConta(conta);
+						modelAndView.setViewName("cartao/debito/comprarDebito");
+						modelAndView.addObject("ok", "Compra efetuada com sucesso!");
+						return modelAndView;
 					}else {
 						modelAndView.setViewName("cartao/debito/comprarDebito");
-						modelAndView.addObject("erro", "Saldo insuficiente!");
+						modelAndView.addObject("erro", "Compra negada!");
 						return modelAndView;
 					}
 				}else {
 					modelAndView.setViewName("cartao/debito/comprarDebito");
-					modelAndView.addObject("erro", "O limite é inferior ao valor da compra!");
+					modelAndView.addObject("erro", "Saldo insuficiente!");
 					return modelAndView;
 				}
-				//realizar compra
 			}else {
-				// senha invalida
 				modelAndView.setViewName("cartao/debito/comprarDebito");
-				modelAndView.addObject("erro", "Senha invalida!");
+				modelAndView.addObject("erro", "O limite é inferior ao valor da compra!");
 				return modelAndView;
 			}
-			
-		} else {
-			modelAndView.addObject("erro", "erro desconhecido!");
+			//realizar compra
+		}else {
+			// senha invalida
 			modelAndView.setViewName("cartao/debito/comprarDebito");
+			modelAndView.addObject("erro", "Senha invalida!");
 			return modelAndView;
 		}
 	}

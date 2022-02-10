@@ -6,10 +6,13 @@ import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.Order;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -83,8 +86,7 @@ public class AreaLogadoController {
     
    
     @PostMapping("saca")
-	public String sacar(Model model,int valor, RedirectAttributes redirAttrs) {
-		System.err.println("SACANDO: "+valor);
+	public String sacar(Model model, int valor, RedirectAttributes redirAttrs) {
 		Conta conta = contaService.getConta(Const.ID_CONTA_LOGADA);
 		if(conta.getSaldo() >= valor ) {
 			if(valor > 0) {

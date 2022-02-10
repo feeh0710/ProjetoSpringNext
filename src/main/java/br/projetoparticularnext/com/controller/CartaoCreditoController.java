@@ -1,5 +1,7 @@
 package br.projetoparticularnext.com.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -121,7 +123,7 @@ public class CartaoCreditoController {
     }
 	
 	@PostMapping("comprar")
-	public ModelAndView comprar( ModelAndView modelAndView,
+	public ModelAndView comprar(@Valid ModelAndView modelAndView,
 			RedirectAttributes attributes, Compra compra,String senha, BindingResult result) {
 		System.err.println("COMPRAR O QUE VEIO DO FOMR: "+senha+" "+compra.getDescricao()+" "+compra.getValor());
 		if (!result.hasErrors()) {

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import br.projetoparticularnext.com.utils.Utils;
 
@@ -18,10 +19,13 @@ public class Compra {
 	@GeneratedValue(strategy = GenerationType.IDENTITY,generator = "compra")
 	@Column(name = "cd_compra")
 	private Long id;
+	
 	@Column(name = "dt_datacompra")
 	private String dataCompra;
+	
 	@Column(name = "ds_valor")
 	private double valor;
+	
 	@Column(name = "ds_descricao")
 	private String descricao;
 	

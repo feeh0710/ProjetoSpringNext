@@ -34,12 +34,12 @@
 	<div class="d-flex justify-content-between">
 			<div class="px-5 py-3">
 				<p class="h4">
-					<strong> Fatura atual: </strong><span th:text="${fatura}" th:if="${fatura}"> R$ 0.0 </span>
+					<strong> Fatura atual: </strong><span th:text="${fatura}" th:if="${fatura}" class="valor"> 0.0 </span>
 				</p>
 			</div>
 			<div class="px-5 py-3">
 				<p class="h4">
-					<strong> Limite disponivel: </strong><span th:text="${limite}" th:if="${limite}"> </span>
+					<strong> Limite disponivel: </strong><span th:text="${limite}" th:if="${limite}"  class="valor"> </span>
 				</p>
 			</div>
 		</div>
@@ -82,5 +82,13 @@
 	</footer>
 
 	<!--  <script type="text/javascript" th:src="@{/js/scriptDebito.js}"></script>-->
+	<script>
+		const valor = document.querySelectorAll(".valor");
+		const arrayValores = Array.from(valor);
+		
+		arrayValores.forEach((item) => {
+			item.innerHTML = new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL', }).format(item.innerHTML);
+		});
+	</script>
 </body>
 </html>

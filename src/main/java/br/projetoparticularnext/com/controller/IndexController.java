@@ -1,8 +1,11 @@
 package br.projetoparticularnext.com.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,41 +47,38 @@ public class IndexController {
 			return "redirect:/";
 		}
 	}
+
 	@PostMapping("/cadastrobasico")
-	public String cadastraCliente(@ModelAttribute("clienteendereco") ClienteEndereco cliend, RedirectAttributes redirAttrs) {
+	public String cadastraCliente(@ModelAttribute("clienteendereco") ClienteEndereco cliend, BindingResult result,
+			RedirectAttributes redirAttrs) {
 		System.out.println(cliend.toString());
-		Endereco endereco = new Endereco(cliend.getCidade(), cliend.getEstado(), cliend.getBairro(), cliend.getNumero(), cliend.getLogradouro(), cliend.getCep());
-		Cliente cliente = new Cliente(cliend.getSenha(), cliend.getEmail(), cliend.getCpf(), cliend.getRg(), cliend.getNome(),cliend.getTelefone(), endereco);
-		
-		if(clienteService.validarCampos(cliend)) {
-			if(cliend.getTipo().equals("3")) {
-				cliente = clienteService.ciarContas(cliente);
-				clienteService.createCliente(cliente);
-				Const.ID_CLIENTE_LOGADO = cliente.getId();
-				redirAttrs.addFlashAttribute("cadastro", "Usuário e conta corrente+poupança cadastradas com sucesso!\n realize login");
-				return "redirect:/";
-			}else if(cliend.getTipo().equals("2")) {
-				clienteService.criaContaPoupanca(cliente);
-				clienteService.createCliente(cliente);
-				Const.ID_CLIENTE_LOGADO = cliente.getId();
-				redirAttrs.addFlashAttribute("cadastro", "Usuário e conta poupança cadastradas com sucesso!\n realize login!");
-				return "redirect:/";
-			}else {
-				cliente = clienteService.criaContaCorrente(cliente);
-				clienteService.createCliente(cliente);
-				Const.ID_CLIENTE_LOGADO = cliente.getId();
-				redirAttrs.addFlashAttribute("cadastro", "Usuário e conta corrente cadastradas com sucesso!\n realize login!");
-				return "redirect:/";
-			}
-		}else {
-			redirAttrs.addFlashAttribute("erro", "Erro!\n Voce precisa preencher todos os campos antes de clicar em cadastrar!");
+		Endereco endereco = new Endereco(cliend.getCidade(), cliend.getEstado(), cliend.getBairro(), cliend.getNumero(),
+				cliend.getLogradouro(), cliend.getCep());
+		Cliente cliente = new Cliente(cliend.getSenha(), cliend.getEmail(), cliend.getCpf(), cliend.getRg(),
+				cliend.getNome(), cliend.getTelefone(), endereco);
+		if (cliend.getTipo().equals("3")) {
+			cliente = clienteService.ciarContas(cliente);
+			clienteService.createCliente(cliente);
+			Const.ID_CLIENTE_LOGADO = cliente.getId();
+			redirAttrs.addFlashAttribute("cadastro",
+					"Usuário e conta corrente+poupança cadastradas com sucesso!\n realize login");
+			return "redirect:/";
+		} else if (cliend.getTipo().equals("2")) {
+			clienteService.criaContaPoupanca(cliente);
+			clienteService.createCliente(cliente);
+			Const.ID_CLIENTE_LOGADO = cliente.getId();
+			redirAttrs.addFlashAttribute("cadastro",
+					"Usuário e conta poupança cadastradas com sucesso!\n realize login!");
+			return "redirect:/";
+		} else {
+			cliente = clienteService.criaContaCorrente(cliente);
+			clienteService.createCliente(cliente);
+			Const.ID_CLIENTE_LOGADO = cliente.getId();
+			redirAttrs.addFlashAttribute("cadastro",
+					"Usuário e conta corrente cadastradas com sucesso!\n realize login!");
 			return "redirect:/";
 		}
+
 	}
 
-	
-
-	
-	
-	
 }
